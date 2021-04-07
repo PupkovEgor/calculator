@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/src/main/java/Package/Admin.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/main/java/Package/Calculator.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/main/java/Package/House.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/main/java/Package/LogInReg.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/main/java/Package/SummerHouse.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/main/java/Package/WinInfo.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/main/java/Package/WinterHouse.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/test/java/Package/HouseTest.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/test/java/Package/MainVisibleTest.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/test/java/Package/ResultTest.java" charset="windows-1251" />
+    <file url="PROJECT" charset="windows-1251" />
+  </component>
+</project>
