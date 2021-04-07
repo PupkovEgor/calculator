@@ -14,13 +14,13 @@ public class House implements Home, Otdelka {
 	public Double OtdelkaPrice(String OtdelkaValue, double square, int CountOfFloor) {
 		double price=0;
 		switch (OtdelkaValue) {
-		case  ("Нет"):
+		case  ("РќРµС‚"):
 			price=0;
 			break;
-		case  ("Черновая отделка"):
+		case  ("Р§РµСЂРЅРѕРІР°СЏ РѕС‚РґРµР»РєР°"):
 			price = square * 5000 * CountOfFloor;	
 			break;
-		case  ("Под ключ"):
+		case  ("РџРѕРґ РєР»СЋС‡"):
 			price = square * 10000 * CountOfFloor;
 			break;
 		}

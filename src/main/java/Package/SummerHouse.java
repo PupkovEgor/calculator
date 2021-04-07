@@ -4,9 +4,9 @@ public class SummerHouse extends Dom {
     String otd;
     @Override
     public void setVnOt(){//double a,int f
-        otd = "อๅ๒";
+        otd = "ะะตั";
         //Otdelka otdelka = new House();
-        //otdelka.OtdelkaPrice("อๅ๒",a,f);
+        //otdelka.OtdelkaPrice("ะะตั",a,f);
     }
     @Override
     public String getVnOt(){

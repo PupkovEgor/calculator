@@ -30,8 +30,8 @@ static double[] win;
 
 public static void Window() {
 	
-	JFrame  MainWindow = new JFrame("Калькулятор стоимости строительства частного дома");	
-	MainWindow.setTitle ("Калькулятор стоимости строительства частного дома");
+	JFrame  MainWindow = new JFrame("РљР°Р»СЊРєСѓР»СЏС‚РѕСЂ СЃС‚РѕРёРјРѕСЃС‚Рё СЃС‚СЂРѕРёС‚РµР»СЊСЃС‚РІР° С‡Р°СЃС‚РЅРѕРіРѕ РґРѕРјР°");	
+	MainWindow.setTitle ("РљР°Р»СЊРєСѓР»СЏС‚РѕСЂ СЃС‚РѕРёРјРѕСЃС‚Рё СЃС‚СЂРѕРёС‚РµР»СЊСЃС‚РІР° С‡Р°СЃС‚РЅРѕРіРѕ РґРѕРјР°");
 	MainWindow.setBounds(100,100,520,410);
 	MainWindow.setResizable(false); 
 	
@@ -40,17 +40,17 @@ public static void Window() {
 		labels[i] = new JLabel();
 
 	}
-	labels[0].setText("Габариты: ");
-	labels[1].setText("Длина: ");
-	labels[2].setText("Ширина: ");
-	labels[3].setText("Высота: ");
-	labels[4].setText("Кол. этажей: ");
-	labels[5].setText("Доп. работники: ");
-	labels[6].setText("Внутренняя отделка: ");
-	labels[7].setText("Срочный заказ: ");
-	labels[8].setText("Расчистка участ	ка: ");
-	labels[9].setText("Промокод: ");
-	labels[10].setText("Итого: ");
+	labels[0].setText("Р“Р°Р±Р°СЂРёС‚С‹: ");
+	labels[1].setText("Р”Р»РёРЅР°: ");
+	labels[2].setText("РЁРёСЂРёРЅР°: ");
+	labels[3].setText("Р’С‹СЃРѕС‚Р°: ");
+	labels[4].setText("РљРѕР». СЌС‚Р°Р¶РµР№: ");
+	labels[5].setText("Р”РѕРї. СЂР°Р±РѕС‚РЅРёРєРё: ");
+	labels[6].setText("Р’РЅСѓС‚СЂРµРЅРЅСЏСЏ РѕС‚РґРµР»РєР°: ");
+	labels[7].setText("РЎСЂРѕС‡РЅС‹Р№ Р·Р°РєР°Р·: ");
+	labels[8].setText("Р Р°СЃС‡РёСЃС‚РєР° СѓС‡Р°СЃС‚	РєР°: ");
+	labels[9].setText("РџСЂРѕРјРѕРєРѕРґ: ");
+	labels[10].setText("РС‚РѕРіРѕ: ");
 	
 	fields = new JTextField[6];
 	
@@ -78,23 +78,23 @@ public static void Window() {
 		labels[i].setBounds(5, (30 * i) + 10 , 130, 30);
 	}
 	
-	String[] arrayBox  = { // создание элементов для jcombobox
-            "Нет",
-            "Черновая отделка",
-            "Под ключ"
+	String[] arrayBox  = { // СЃРѕР·РґР°РЅРёРµ СЌР»РµРјРµРЅС‚РѕРІ РґР»СЏ jcombobox
+            "РќРµС‚",
+            "Р§РµСЂРЅРѕРІР°СЏ РѕС‚РґРµР»РєР°",
+            "РџРѕРґ РєР»СЋС‡"
     };
 	
-	String[] arrayBox1  = { // создание элементов для jcombobox
-			"Персональный",
-			"Летний дом",
-			"Зимний дом"
+	String[] arrayBox1  = { // СЃРѕР·РґР°РЅРёРµ СЌР»РµРјРµРЅС‚РѕРІ РґР»СЏ jcombobox
+			"РџРµСЂСЃРѕРЅР°Р»СЊРЅС‹Р№",
+			"Р›РµС‚РЅРёР№ РґРѕРј",
+			"Р—РёРјРЅРёР№ РґРѕРј"
 	};
 	
 	
 	
-    jcomboBox = new JComboBox(arrayBox);//создание jcombobox
+    jcomboBox = new JComboBox(arrayBox);//СЃРѕР·РґР°РЅРёРµ jcombobox
     jcomboBox.setBounds(135, 190, 150, 30);
-    JComboBox jcomboBox1 = new JComboBox(arrayBox1);//создание jcombobox
+    JComboBox jcomboBox1 = new JComboBox(arrayBox1);//СЃРѕР·РґР°РЅРёРµ jcombobox
 	jcomboBox1.setBounds(290, 40, 150, 30);
 	
     
@@ -123,8 +123,8 @@ public static void Window() {
 		main_panel.add(labels[i]);
 	}
 	
-	JButton infoB = new JButton("Информация");
-	ActionListener actionListener = new WinInfo(); //создаем слушатель
+	JButton infoB = new JButton("РРЅС„РѕСЂРјР°С†РёСЏ");
+	ActionListener actionListener = new WinInfo(); //СЃРѕР·РґР°РµРј СЃР»СѓС€Р°С‚РµР»СЊ
 	infoB.addActionListener(actionListener);
 	
 	infoB.setBounds(380,280, 110, 30);
@@ -132,15 +132,15 @@ public static void Window() {
 	main_panel.add(infoB);
 	
 	
-    JButton button_calc = new JButton("Расчет"); // Добавление кнопки расчета
-    button_calc.setBounds(360,230,140,30); // задаём ей координаты
+    JButton button_calc = new JButton("Р Р°СЃС‡РµС‚"); // Р”РѕР±Р°РІР»РµРЅРёРµ РєРЅРѕРїРєРё СЂР°СЃС‡РµС‚Р°
+    button_calc.setBounds(360,230,140,30); // Р·Р°РґР°С‘Рј РµР№ РєРѕРѕСЂРґРёРЅР°С‚С‹
     
-    main_panel.add(button_calc); //добавление кнопки расчета на главную панель
+    main_panel.add(button_calc); //РґРѕР±Р°РІР»РµРЅРёРµ РєРЅРѕРїРєРё СЂР°СЃС‡РµС‚Р° РЅР° РіР»Р°РІРЅСѓСЋ РїР°РЅРµР»СЊ
     
      
     
    
-    JButton buttonLeave = buttonCreate(); // создание кнопки "Выход"
+    JButton buttonLeave = buttonCreate(); // СЃРѕР·РґР°РЅРёРµ РєРЅРѕРїРєРё "Р’С‹С…РѕРґ"
     buttonLeave.setBounds(360,325,140,30);
     buttonLeave.addActionListener(actionEvent ->  {
        	System.exit(1);
@@ -158,20 +158,20 @@ public static void Window() {
 	});
 
 
-    ActionListener actionListenerCalc = new ActionListener() { //слушатель расчета
+    ActionListener actionListenerCalc = new ActionListener() { //СЃР»СѓС€Р°С‚РµР»СЊ СЂР°СЃС‡РµС‚Р°
     	
         public void actionPerformed(ActionEvent e) {
         	String f[] = new String[6];
         	for(int i = 0 ; i < 6; i++) {
-        		f[i]= fields[i].getText(); // Приравние массива field c получением текста к массиву f
+        		f[i]= fields[i].getText(); // РџСЂРёСЂР°РІРЅРёРµ РјР°СЃСЃРёРІР° field c РїРѕР»СѓС‡РµРЅРёРµРј С‚РµРєСЃС‚Р° Рє РјР°СЃСЃРёРІСѓ f
         	}
         	labels[10].setText(sobitie(f,jcheckBox.isSelected(),jcheckBox2.isSelected(),(String)jcomboBox.getSelectedItem(),(String)jcomboBox1.getSelectedItem()));
-        	// добавление данных в метод sobitie
+        	// РґРѕР±Р°РІР»РµРЅРёРµ РґР°РЅРЅС‹С… РІ РјРµС‚РѕРґ sobitie
         }
     };
 
 
-    button_calc.addActionListener(actionListenerCalc); //добавляем слушатель к кнопке
+    button_calc.addActionListener(actionListenerCalc); //РґРѕР±Р°РІР»СЏРµРј СЃР»СѓС€Р°С‚РµР»СЊ Рє РєРЅРѕРїРєРµ
 	main_panel.setLayout(null);
 	MainWindow.add(main_panel);
 	MainWindow.setVisible(true);
@@ -180,9 +180,9 @@ public static void Window() {
 }
 
 static Dom dom;
-public static JButton buttonCreate() { //метод создания кнопки "Выход"
+public static JButton buttonCreate() { //РјРµС‚РѕРґ СЃРѕР·РґР°РЅРёСЏ РєРЅРѕРїРєРё "Р’С‹С…РѕРґ"
 	JButton buttonLeave = new JButton();
-	buttonLeave.setText("Выход");
+	buttonLeave.setText("Р’С‹С…РѕРґ");
 	
 	return buttonLeave;
 }
@@ -190,13 +190,13 @@ public static JButton buttonCreate() { //метод создания кнопки "Выход"
 public static void preset(String jcomboBox1){
 	setUp();
 	switch (jcomboBox1){
-		case "Персональный":{
+		case "РџРµСЂСЃРѕРЅР°Р»СЊРЅС‹Р№":{
 			dom = new PersonalHouse();
 			open();
 			break;
 			
 		}
-		case "Летний дом":{
+		case "Р›РµС‚РЅРёР№ РґРѕРј":{
 			dom = new SummerHouse();
 			dom.setLenght(sum[0]);
 			dom.setWeight(sum[1]);
@@ -206,7 +206,7 @@ public static void preset(String jcomboBox1){
 			close();
 			break;
 		}
-		case "Зимний дом":{
+		case "Р—РёРјРЅРёР№ РґРѕРј":{
 			dom = new WinterHouse();
 			dom.setLenght(win[0]);
 			dom.setWeight(win[1]);
@@ -223,8 +223,8 @@ public static void close(){
 	int a=0;
 	
 	switch(dom.getVnOt()){
-		case "Нет": {a=0;break;}
-		case "Под ключ": {a=2;break;}
+		case "РќРµС‚": {a=0;break;}
+		case "РџРѕРґ РєР»СЋС‡": {a=2;break;}
 	}
 	fields[0].setEditable(false);
 	fields[1].setEditable(false);
@@ -249,7 +249,7 @@ public static void open(){
 
 	static String item;
 
-public static String sobitie(String fields[], boolean jcheckBox, boolean jcheckBox2, String jcomboBox,String jcomboBox1 ){//получение данных
+public static String sobitie(String fields[], boolean jcheckBox, boolean jcheckBox2, String jcomboBox,String jcomboBox1 ){//РїРѕР»СѓС‡РµРЅРёРµ РґР°РЅРЅС‹С…
 	int summa = 5000;
 	double srochno = 0.0;
 	double chistka = 0.0;
@@ -274,32 +274,32 @@ public static String sobitie(String fields[], boolean jcheckBox, boolean jcheckB
 		chistka = 5000.0;
 	}
 
-    try{ // отлавливание ошибки при переводе строки в число 
-        double a = Double.parseDouble(fields[0]); // преобразование строк в тип double
+    try{ // РѕС‚Р»Р°РІР»РёРІР°РЅРёРµ РѕС€РёР±РєРё РїСЂРё РїРµСЂРµРІРѕРґРµ СЃС‚СЂРѕРєРё РІ С‡РёСЃР»Рѕ 
+        double a = Double.parseDouble(fields[0]); // РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ СЃС‚СЂРѕРє РІ С‚РёРї double
         double b = Double.parseDouble(fields[1]);
         double c = Double.parseDouble(fields[2]);
-        int f = Integer.parseInt(fields[3]); // преобразование строк в тип int
+        int f = Integer.parseInt(fields[3]); // РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ СЃС‚СЂРѕРє РІ С‚РёРї int
         int rabotnik = Integer.parseInt(fields[4]);
         if (rabotnik < 0 || rabotnik > 5) {
         	
-        	return "ERROR: неверное кол-во работников"; //Возвращение значения
+        	return "ERROR: РЅРµРІРµСЂРЅРѕРµ РєРѕР»-РІРѕ СЂР°Р±РѕС‚РЅРёРєРѕРІ"; //Р’РѕР·РІСЂР°С‰РµРЅРёРµ Р·РЅР°С‡РµРЅРёСЏ
         }else {
         	
        
-        if (a < 1 || b < 1  ) { //проверка правильности ввода чисел
+        if (a < 1 || b < 1  ) { //РїСЂРѕРІРµСЂРєР° РїСЂР°РІРёР»СЊРЅРѕСЃС‚Рё РІРІРѕРґР° С‡РёСЃРµР»
         	
-        	return "ERROR: неверны размеры длины или ширины";
+        	return "ERROR: РЅРµРІРµСЂРЅС‹ СЂР°Р·РјРµСЂС‹ РґР»РёРЅС‹ РёР»Рё С€РёСЂРёРЅС‹";
         }
         else {
          if (c < 2) {
         	 
-        	 return "ERROR: неверная высота дома";
+        	 return "ERROR: РЅРµРІРµСЂРЅР°СЏ РІС‹СЃРѕС‚Р° РґРѕРјР°";
          }else {
         	 if(f < 1 || f > 3) {
         		 
-                 return "ERROR: недопустимое количество этажей";
+                 return "ERROR: РЅРµРґРѕРїСѓСЃС‚РёРјРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЌС‚Р°Р¶РµР№";
         	 }else {
-        		 if (jcomboBox1.equals("Персональный")){
+        		 if (jcomboBox1.equals("РџРµСЂСЃРѕРЅР°Р»СЊРЅС‹Р№")){
 					 dom = new PersonalHouse();
 					 dom.setLenght(a);
 					 dom.setWeight(b);
@@ -312,8 +312,8 @@ public static String sobitie(String fields[], boolean jcheckBox, boolean jcheckB
         		 Otdelka otdelka = new House();
         		 String item = (String)jcomboBox;
         		 String result =String.format("%.2f",(home.GetPrice(dom.getLenght(),dom.getWeight(),dom.getVisota(),dom.getKolE())+
-				 otdelka.OtdelkaPrice(item,dom.getLenght()*dom.getWeight(),dom.getKolE())+ srochno + chistka + rabotnik)*promo);// Расчет итоговой стоимости
-				 return "Итого: " + result + " руб.";
+				 otdelka.OtdelkaPrice(item,dom.getLenght()*dom.getWeight(),dom.getKolE())+ srochno + chistka + rabotnik)*promo);// Р Р°СЃС‡РµС‚ РёС‚РѕРіРѕРІРѕР№ СЃС‚РѕРёРјРѕСЃС‚Рё
+				 return "РС‚РѕРіРѕ: " + result + " СЂСѓР±.";
         	 }
          }
        
@@ -321,8 +321,8 @@ public static String sobitie(String fields[], boolean jcheckBox, boolean jcheckB
     }
     }
     catch (NumberFormatException nfe) { 
-       // labels[10].setText("ERROR: Введите число"); //вывод сообщения в случае ошибки
-    	return "ERROR: Введите число";
+       // labels[10].setText("ERROR: Р’РІРµРґРёС‚Рµ С‡РёСЃР»Рѕ"); //РІС‹РІРѕРґ СЃРѕРѕР±С‰РµРЅРёСЏ РІ СЃР»СѓС‡Р°Рµ РѕС€РёР±РєРё
+    	return "ERROR: Р’РІРµРґРёС‚Рµ С‡РёСЃР»Рѕ";
     }
     
 }

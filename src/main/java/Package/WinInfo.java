@@ -15,7 +15,7 @@ public class WinInfo implements ActionListener {
 			JPanel panel = new JPanel();
 			panel.setLayout (new BoxLayout(panel, BoxLayout.Y_AXIS));
 			
-			info.setTitle ("Информация");
+			info.setTitle ("РРЅС„РѕСЂРјР°С†РёСЏ");
 			info.setBounds(481,288,250,130);
 			JLabel laba_info[] = new JLabel[4];
 			laba_info = infoIn(laba_info);
@@ -25,7 +25,7 @@ public class WinInfo implements ActionListener {
 				panel.add(laba_info[i]);
 			}
 
-			JButton button_back = new JButton("Назад");
+			JButton button_back = new JButton("РќР°Р·Р°Рґ");
 			button_back.setBounds(10, 165, 130, 30);
 			panel.add(button_back);
 			
@@ -40,10 +40,10 @@ public class WinInfo implements ActionListener {
 
 }
 	public static JLabel[] infoIn(JLabel l[]) {
-		l[0] = new JLabel("Салихов Р.Н - Модератор");
-		l[1] = new JLabel("Камолкин В.С - Разработчик 1");
-		l[2] = new JLabel("Иутин А.С - Разработчик 2");
-		l[3] = new JLabel("Бесполитов Д.А - Разработчик 3");
+		l[0] = new JLabel("РЎР°Р»РёС…РѕРІ Р .Рќ - РњРѕРґРµСЂР°С‚РѕСЂ");
+		l[1] = new JLabel("РљР°РјРѕР»РєРёРЅ Р’.РЎ - Р Р°Р·СЂР°Р±РѕС‚С‡РёРє 1");
+		l[2] = new JLabel("РСѓС‚РёРЅ Рђ.РЎ - Р Р°Р·СЂР°Р±РѕС‚С‡РёРє 2");
+		l[3] = new JLabel("Р‘РµСЃРїРѕР»РёС‚РѕРІ Р”.Рђ - Р Р°Р·СЂР°Р±РѕС‚С‡РёРє 3");
 		return l;
 	}
 }

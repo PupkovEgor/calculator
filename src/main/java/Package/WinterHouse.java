@@ -3,9 +3,9 @@ package Package;
 public class WinterHouse extends Dom {
     @Override
     public void setVnOt(){//double a,int f
-        otd = "Под ключ";
+        otd = "РџРѕРґ РєР»СЋС‡";
         //Otdelka otdelka = new House();
-        //otdelka.OtdelkaPrice("Нет",a,f);
+        //otdelka.OtdelkaPrice("РќРµС‚",a,f);
     }
     @Override
     public String getVnOt(){

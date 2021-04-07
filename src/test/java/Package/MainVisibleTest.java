@@ -22,7 +22,7 @@ public class MainVisibleTest {
 
 	@Test
 	public void test() {
-	assertTrue(testknopka.getText() == "Выход");
+	assertTrue(testknopka.getText() == "Р’С‹С…РѕРґ");
 	
 	}
 

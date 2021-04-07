@@ -19,7 +19,7 @@ public class ResultTest {
 //changes 22
 	@Test
 	public void test() {
-		assertEquals(Calculator.sobitie(g, false, false,"Черновая отделка", "Персональный"), "Итого: 9354250,00 руб." );
+		assertEquals(Calculator.sobitie(g, false, false,"Р§РµСЂРЅРѕРІР°СЏ РѕС‚РґРµР»РєР°", "РџРµСЂСЃРѕРЅР°Р»СЊРЅС‹Р№"), "РС‚РѕРіРѕ: 9354250,00 СЂСѓР±." );
 	}
 
 }

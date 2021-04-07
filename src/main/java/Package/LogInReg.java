@@ -12,22 +12,22 @@ import java.util.Arrays;
 public class LogInReg {
 
     void logWin() {
-        JFrame LogInWindow = new JFrame("Вход");
-        LogInWindow.setTitle("Вход");
+        JFrame LogInWindow = new JFrame("Р’С…РѕРґ");
+        LogInWindow.setTitle("Р’С…РѕРґ");
         LogInWindow.setBounds(100, 100, 266, 290);
         LogInWindow.setResizable(false);
 
         JPanel panel = new JPanel();
 
-        JLabel logl = new JLabel("Логин:");
+        JLabel logl = new JLabel("Р›РѕРіРёРЅ:");
         logl.setBounds(40,10,140,30);
-        JLabel pasl = new JLabel("Пароль:");
+        JLabel pasl = new JLabel("РџР°СЂРѕР»СЊ:");
         pasl.setBounds(40,70,140,30);
         JLabel info = new JLabel();
         info.setBounds(10, 217,250,30);
 
-        JButton enter = new JButton("Войти");
-        JButton reg = new JButton("Регистрация");
+        JButton enter = new JButton("Р’РѕР№С‚Рё");
+        JButton reg = new JButton("Р РµРіРёСЃС‚СЂР°С†РёСЏ");
         JButton unhide = new JButton();
 
         JTextField log = new JTextField();
@@ -41,22 +41,22 @@ public class LogInReg {
 
         reg.addActionListener(e -> {
             info.setText("");
-            if (reg.getText().equals("Регистрация")){
-                reg.setText("Назад");
-                LogInWindow.setTitle("Регистрация");
-                enter.setText("Регистрация");
+            if (reg.getText().equals("Р РµРіРёСЃС‚СЂР°С†РёСЏ")){
+                reg.setText("РќР°Р·Р°Рґ");
+                LogInWindow.setTitle("Р РµРіРёСЃС‚СЂР°С†РёСЏ");
+                enter.setText("Р РµРіРёСЃС‚СЂР°С†РёСЏ");
             }
             else{
-                reg.setText("Регистрация");
-                LogInWindow.setTitle("Вход");
-                enter.setText("Войти");
+                reg.setText("Р РµРіРёСЃС‚СЂР°С†РёСЏ");
+                LogInWindow.setTitle("Р’С…РѕРґ");
+                enter.setText("Р’РѕР№С‚Рё");
             }
         });
 
         enter.addActionListener(e -> {
             info.setText("");
-            if (enter.getText().equals("Войти")){
-                if (log.getText().equals("admin")&&(Arrays.equals(pas.getPassword(),new char[]{'a','d','m','i','n'}))){ //аккаунт администратора
+            if (enter.getText().equals("Р’РѕР№С‚Рё")){
+                if (log.getText().equals("admin")&&(Arrays.equals(pas.getPassword(),new char[]{'a','d','m','i','n'}))){ //Р°РєРєР°СѓРЅС‚ Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂР°
                     Admin adm = new Admin();
                     adm.logWin();
                     Calculator calc = new Calculator();
@@ -64,7 +64,7 @@ public class LogInReg {
                     LogInWindow.dispose();
                 }
                 else{
-                    //Проверка логина-пароля
+                    //РџСЂРѕРІРµСЂРєР° Р»РѕРіРёРЅР°-РїР°СЂРѕР»СЏ
                     try{
                         File file = new File("./src/main/resources","File.txt");
                         File fjar = new File("..","File.txt");
@@ -77,7 +77,7 @@ public class LogInReg {
                     }
                     else{
                         file.createNewFile();
-                        info.setText("Данного пользователя не существует");
+                        info.setText("Р”Р°РЅРЅРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚");
                     }
                     }
                     catch (IOException a){System.out.print(a);}
@@ -85,7 +85,7 @@ public class LogInReg {
                 }
             }
             else{
-                //Регистрация нового пользователя
+                //Р РµРіРёСЃС‚СЂР°С†РёСЏ РЅРѕРІРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
             }
         });
 
@@ -98,7 +98,7 @@ public class LogInReg {
 
             @Override
             public void mouseReleased(MouseEvent e) {
-                pas.setEchoChar('•');
+                pas.setEchoChar('вЂў');
             }
 
             @Override
