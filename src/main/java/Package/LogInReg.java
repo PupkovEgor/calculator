@@ -4,12 +4,131 @@ import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.Arrays;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
-public class LogInReg {
+@WebServlet(name="Log", urlPatterns="/LogCalc")
+
+
+public class LogInReg extends HttpServlet {
+
+    static byte go = 1;
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        RequestCalc Calc = RequestCalc.fromRequestParameters(request);
+        Calc.setAsRequestAttributesAndCalculate(request);
+
+        switch (go){
+            case 0: request.getRequestDispatcher("/LogIn.jsp").forward(request, response); break;
+            case 1: request.getRequestDispatcher("/Form.jsp").forward(request, response); break;
+            case 2: request.getRequestDispatcher("/Reg.jsp").forward(request, response); break;
+        }
+    }
+
+    private static class RequestCalc {
+        private final String log;
+        private final String pas;
+        private final String page;
+
+        private RequestCalc (String first, String second,String page) {
+            this.log = first;
+            this.pas = second;
+            this.page = page;
+        }
+
+        public static RequestCalc fromRequestParameters(HttpServletRequest request) {
+            return new RequestCalc(
+                    request.getParameter("login"),
+                    request.getParameter("pass"),
+                    request.getParameter("page")
+                    );
+
+        }
+
+        public void setAsRequestAttributesAndCalculate(HttpServletRequest request) {
+            boolean lo = false;
+            boolean swi = true;
+            boolean ch = false;
+            if (page.equals("LogIn")) {
+                try {
+                    InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream("File.txt");
+                    if (in!=null){
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        if (swi) {
+                            swi = false;
+                            if (log.equals(line)) {
+                                lo = true;
+                            }
+                        } else {
+                            swi = true;
+                            if (lo && pas.equals(line)) {
+                                go = 1;
+                                ch = true;
+                                break;
+                            } else {
+                                lo = false;
+                            }
+                        }
+                    }
+                    if (!ch) {
+                        request.setAttribute("result", "Логин/Пароль не верен");
+                        go = 0;
+                    }
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            else{
+                go = 0;
+                try {
+                    InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream("File.txt");
+                    if (in!=null){
+                        BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+                        String line;
+                        while ((line = reader.readLine()) != null) {
+                            if (swi) {
+                                swi = false;
+                                if (log.equals(line)) {
+                                    ch = true;
+                                    break;
+                                }
+                            } else {
+                                swi = true;
+                            }
+                        }
+                        if (ch) {
+                            request.setAttribute("result", "Такой логин уже существует");
+                            go = 2;
+                        }
+                        else{
+                            reader.close();
+                            FileWriter writer = new FileWriter("File.txt", true);
+                            writer.write("\n"+log+"\n"+pas);
+                            /*FileOutputStream fos = new FileOutputStream("File.txt");
+                            BufferedOutputStream writer = new BufferedOutputStream(fos);
+                            byte[] buffer = log.getBytes();
+                            writer.write(buffer, 0, buffer.length);
+                            buffer = pas.getBytes();
+                            writer.write(buffer, 0, buffer.length);*/
+                        }
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+}
+
+/*public class LogInReg {
 
     void logWin() {
         JFrame LogInWindow = new JFrame("Вход");
@@ -86,7 +205,7 @@ public class LogInReg {
             }
             else{
                 //Регистрация нового пользователя
-            }
+           }
         });
 
         unhide.addMouseListener(new MouseListener() {
@@ -124,4 +243,4 @@ public class LogInReg {
         LogInWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     }
-}
+}*/

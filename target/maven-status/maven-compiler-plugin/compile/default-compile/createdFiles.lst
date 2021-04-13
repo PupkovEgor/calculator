@@ -4,7 +4,7 @@ Package\Calculator$1.class
 Package\Calculator$2.class
 Package\LogInReg.class
 Package\Admin.class
-Package\LogInReg$1.class
+Package\LogInReg$RequestCalc.class
 Package\Main.class
 Package\Dom.class
 Package\SummerHouse.class

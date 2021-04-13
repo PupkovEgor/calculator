@@ -15,7 +15,7 @@ import Package.Calculator.*;
 public class Main {
 	public static void main(String[] args) {
 		LogInReg l = new LogInReg();
-		l.logWin();
+		//l.logWin();
 	}
 	
 	
