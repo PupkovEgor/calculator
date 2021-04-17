@@ -26,9 +26,9 @@ pageEncoding="UTF-8"%>
 
 <p>внутренняя отделка:
 <select name="otdelka" value= "${otdelka}" >
-<option value="Heт">Heт </option>
-<option value="Чepнoвaя">Чepнoвaя</option>
-<option value="Под ключ">Под ключ</option>
+<option value="1">Heт </option>
+<option value="2">Чepнoвaя</option>
+<option value="3">Под ключ</option>
 </select> </p>  
 <p> Срочный заказ: <input type="checkbox"  name="order" value= "${order}" > </p>
 <p> Очистка участка: <input type="checkbox"  name="clearing" value= "${clearing}" > </p>
@@ -36,9 +36,9 @@ pageEncoding="UTF-8"%>
 <input type="text" name="promo" value= "${promo}" size="20" > </p>
 <p>готовые пресеты :
 <select name="preset"  value= "${preset}" >
-<option vаlue="персональный">персональный </option>
-<option vаlue="летний дом">летний дом </option>
-<option vаlue="зимний дом">зимний дом </option>
+<option value="1">персональный </option>
+<option value="2">летний дом </option>
+<option value="3">зимний дом </option>
 </select> </p>
 <p> <input type="submit" name="calculation" value=" Расчет "> </p>
 <p> <input type="button" name="info" value=" Информация "> </p>

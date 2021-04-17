@@ -36,30 +36,28 @@ public class Calculator extends  HttpServlet   {
 		private final String vis;
 		private final String fl_count;
 		private final String rab_count;
-		private final String otd;
+		private  String otd;
 		private final String ord;
 		private final String clear;
 		private final String pr;
-		private final String pres;
+		private  String pres;
 		//private final String shirina;
 		
 		private double result;
 						
-		private RequestCalc (String dlina, String shirina, String visota, String floor_count, String worker_count, String otdelka, String clearing, String order, String promo, String preset) {
+		private RequestCalc (String dlina, String shirina, String visota, String floor_count, String worker_count, String otdelka, String order, String clearing, String promo, String preset) {
 			this.dl = dlina;
 			this.sh = shirina;
 			this.vis = visota;
 			this.fl_count = floor_count;
 			this.rab_count = worker_count;
 			this.otd = otdelka;
-			this.clear = clearing;
 			this.ord = order;
+			this.clear = clearing;			
 			this.pr = promo;
 			this.pres = preset;
 			
-			
-			}
-		
+		}
 		public static RequestCalc fromRequestParameters (HttpServletRequest request) {
 			return new RequestCalc(
 				request.getParameter("length"),
@@ -76,14 +74,33 @@ public class Calculator extends  HttpServlet   {
 			}
 				
 		public void setAsRequestAttributesAndCalculate(HttpServletRequest request) {
+			switch (otd){
+            case "1": otd = "Heт"; break;
+            case "2": otd = "Чepнoвaя"; break;
+            case "3": otd = "Под ключ"; break;
+		}
+			
+			switch (pres){
+            case "1": pres = "Персональный "; break;
+            case "2": pres = "Летний дом"; break;
+            case "3": pres = "Зимний дом"; break;
+		}
 			request.setAttribute("result_length", dl);
 			request.setAttribute("result_width", sh);
 			request.setAttribute("result_height", vis);
 			request.setAttribute("result_floor", fl_count);
 			request.setAttribute("result_worker", rab_count);
 			request.setAttribute("result_otdelka", otd);
-			request.setAttribute("result_order", ord);
-			request.setAttribute("result_clearing", clear);
+			if (ord != null){
+                request.setAttribute("result_order", "Да");}
+            else{
+                request.setAttribute("result_order", "Нет");
+            }
+            if (clear != null){
+                request.setAttribute("result_clearing", "Да");}
+            else{
+                request.setAttribute("result_clearing", "Нет");
+            }
 			request.setAttribute("result_promo", pr);
 			request.setAttribute("result_preset", pres);
 			
