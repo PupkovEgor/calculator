@@ -29,13 +29,11 @@ pageEncoding="UTF-8"%>
 <option value="Heт">Heт </option>
 <option value="Чepнoвaя">Чepнoвaя</option>
 <option value="Под ключ">Под ключ</option>
-</select> </p>
-  
-<p> Срочный заказ: <input type="checkbox" checked="true" name="order" value= "${order}" > </p>
-<p> Очистка участка: <input type="checkbox" checked="true" name="clearing" value= "${clearing}" > </p>
+</select> </p>  
+<p> Срочный заказ: <input type="checkbox"  name="order" value= "${order}" > </p>
+<p> Очистка участка: <input type="checkbox"  name="clearing" value= "${clearing}" > </p>
 <p>промокод:
 <input type="text" name="promo" value= "${promo}" size="20" > </p>
-
 <p>готовые пресеты :
 <select name="preset"  value= "${preset}" >
 <option vаlue="персональный">персональный </option>
@@ -44,7 +42,7 @@ pageEncoding="UTF-8"%>
 </select> </p>
 <p> <input type="submit" name="calculation" value=" Расчет "> </p>
 <p> <input type="button" name="info" value=" Информация "> </p>
-<p> <input type="button" name="exit" value=" Выход "> </р>
+<p> <input type="button" name="exit" value=" Выход из аккаунта" onclick="location.href='LogIn.jsp'"> </р>
 <p> <input type="button" name="settings" value=" Смена настроек "> </р>
 </form>
 </div>
