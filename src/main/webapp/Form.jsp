@@ -9,31 +9,31 @@
 
 <p> габариты:</p>
 <p>длина:
-<input type="text" size="20"> </p>
+<input type="text" name="long" size="20"> </p>
 
 <p> ширина:
-<input type="text" size="20"> </p>
+<input type="text" name="width" size="20"> </p>
 
 <p>высота:
-<input type="text" size="20" > </p>
+<input type="text" name="height" size="20" > </p>
 
 <p> количество этажей:
-<input type="text" size="20" > </p>
+<input type="text" name="floor" size="20" > </p>
 
 <p>доп. работников:
-<input type="text" sizG="20" > </p>
+<input type="text" name="worker" size="20" > </p>
 
 <p>внутренняя отделка:
 <select name="atdelka">
-
 <option value="al">Heт </option>
-<option val ue="a2">Чepнoвaя</option>
+<option value="a2">Чepнoвaя</option>
 <option value="a3">Под ключ</option>
 </select> </p>
-<p> Срочный заказ: <input type="checkbox" checked> </p>
-<p> Очистка участка: <input type="checkbox" checked> </p>
+  
+<p> Срочный заказ: <input type="checkbox" name="order" checked> </p>
+<p> Очистка участка: <input type="checkbox" name="clearing" checked> </p>
 <p>промокод:
-<input type="text" size="20" > </p>
+<input type="text" name="promo" size="20" > </p>
 
 <p>готовые пресеты :
 <select name="preset">
@@ -42,10 +42,10 @@
 <option vаlue="гЗ">зимний дом </option>
 </select> </p>
 
-<p> <input type="button" value=" Расчет "> </p>
-<p> <input type="button" value=" Информация "> </p>
-<p> <input type="button" value=" Выход "> </р>
-<p> <input type="button" value=" Смена настроек "> </р>
+<p> <input type="button" name="calculation" value=" Расчет "> </p>
+<p> <input type="button" name="info" value=" Информация "> </p>
+<p> <input type="button" name="exit" value=" Выход "> </р>
+<p> <input type="button" name="settings" value=" Смена настроек "> </р>
 </div>
 </body>
 </html>
