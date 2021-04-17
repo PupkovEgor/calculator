@@ -9,7 +9,7 @@
 
 <p> габариты:</p>
 <p>длина:
-<input type="text" name="long" value= "${long}" size="20"> </p>
+<input type="text" name="long" value= "${length}" size="20"> </p>
 
 <p> ширина:
 <input type="text" name="width"  value= "${width}" size="20"> </p>
