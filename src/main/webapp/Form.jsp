@@ -1,8 +1,8 @@
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+pageEncoding="UTF-8"%>
 ﻿<!DOCTYPE HTML>
 <html>
 <head>
-<meta content="text/html; charset=utf-8">
 <title>Пример веб-страницы</title>
 </head>
 <body>
