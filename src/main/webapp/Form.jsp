@@ -24,11 +24,11 @@
 <input type="text" sizG="20" > </p>
 
 <p>внутренняя отделка:
-<select name="food">
+<select name="atdelka">
 
-<option value="rl">Heт </option>
-<option val ue="r2">Чepнoвaя</option>
-<option value="r3">Под ключ</option>
+<option value="al">Heт </option>
+<option val ue="a2">Чepнoвaя</option>
+<option value="a3">Под ключ</option>
 </select> </p>
 <p> Срочный заказ: <input type="checkbox" checked> </p>
 <p> Очистка участка: <input type="checkbox" checked> </p>
@@ -36,7 +36,7 @@
 <input type="text" size="20" > </p>
 
 <p>готовые пресеты :
-<select name="food">
+<select name="preset">
 <option vаlue="г1">персональный </option>
 <option vаlue="г2">летний дом </option>
 <option vаlue="гЗ">зимний дом </option>
