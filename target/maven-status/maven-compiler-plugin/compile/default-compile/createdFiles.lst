@@ -1,16 +1,1 @@
-Package\WinterHouse.class
-Package\Calculator.class
-Package\Calculator$1.class
-Package\Calculator$2.class
-Package\LogInReg.class
-Package\Admin.class
-Package\LogInReg$RequestCalc.class
-Package\Main.class
-Package\Dom.class
-Package\SummerHouse.class
-Package\Home.class
-Package\Calc.class
-Package\Otdelka.class
-Package\PersonalHouse.class
-Package\House.class
-Package\WinInfo.class
+Package/Calculator$RequestCalc.class

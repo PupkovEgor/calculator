@@ -4,14 +4,4 @@
   <welcome-file-list>
     <welcome-file>LogIn.jsp</welcome-file>
   </welcome-file-list>
-  <servlet>
-    <description></description>
-    <display-name>Calc</display-name>
-    <servlet-name>Calc</servlet-name>
-    <servlet-class>Package.LogInReg</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Log</servlet-name>
-    <url-pattern>/LogCalc</url-pattern>
-  </servlet-mapping>
 </web-app>

@@ -6,6 +6,12 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import Package.House.*;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -14,14 +20,109 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class Calculator extends Calc  {
+@WebServlet(name="Calc", urlPatterns="/Calculator")
+public class Calculator extends  HttpServlet   {
 	
-@Override
- void  calculate() {
-	Window();
-}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		RequestCalc Calc = RequestCalc.fromRequestParameters(request);
+		Calc.setAsRequestAttributesAndCalculate(request);
+		 
+		request.getRequestDispatcher("/Result.jsp").forward(request, response);
+		
+	}
+	private static class RequestCalc {
+		private final String dl;
+		private final String sh;
+		private final String vis;
+		private final String fl_count;
+		private final String rab_count;
+		private final String otd;
+		private final String ord;
+		private final String clear;
+		private final String pr;
+		private final String pres;
+		//private final String shirina;
+		
+		private double result;
+						
+		private RequestCalc (String dlina, String shirina, String visota, String floor_count, String worker_count, String otdelka, String clearing, String order, String promo, String preset) {
+			this.dl = dlina;
+			this.sh = shirina;
+			this.vis = visota;
+			this.fl_count = floor_count;
+			this.rab_count = worker_count;
+			this.otd = otdelka;
+			this.clear = clearing;
+			this.ord = order;
+			this.pr = promo;
+			this.pres = preset;
+			
+			
+			}
+		
+		public static RequestCalc fromRequestParameters (HttpServletRequest request) {
+			return new RequestCalc(
+				request.getParameter("length"),
+				request.getParameter("width"),
+				request.getParameter("height"),
+				request.getParameter("floor"),
+				request.getParameter("worker"),
+				request.getParameter("otdelka"),
+				request.getParameter("order"),
+				request.getParameter("clearing"),
+				request.getParameter("promo"),
+				request.getParameter("preset")
+				);
+			}
+				
+		public void setAsRequestAttributesAndCalculate(HttpServletRequest request) {
+			request.setAttribute("result_length", dl);
+			request.setAttribute("result_width", sh);
+			request.setAttribute("result_height", vis);
+			request.setAttribute("result_floor", fl_count);
+			request.setAttribute("result_worker", rab_count);
+			request.setAttribute("result_otdelka", otd);
+			request.setAttribute("result_order", ord);
+			request.setAttribute("result_clearing", clear);
+			request.setAttribute("result_promo", pr);
+			request.setAttribute("result_preset", pres);
+			
+			
+			
+			double length_try;
+			double width_try;
+			double height_try;
+			double floor_try;
+			double worker_try;
+			
+			
+			
+			try { 
+			length_try=Double.parseDouble(dl);
+			width_try=Double.parseDouble(sh);
+			height_try=Double.parseDouble(vis);
+			floor_try=Double.parseDouble(fl_count);
+			worker_try=Double.parseDouble(rab_count);
+			
+			
+			
+			}
+			catch (NumberFormatException e) {
+				 length_try = 0;
+				 width_try = 0;
+				 height_try = 0;
+				 floor_try = 0;
+				 worker_try = 0;	
+			}
+			
+			result=length_try + width_try + height_try + floor_try + worker_try;
+			request.setAttribute("result", result);
+		}
+		
+	}
+	
 
-static JLabel[] labels;
+/*static JLabel[] labels;
 static JTextField[] fields;
 static	JComboBox jcomboBox;
 static double[] sum;
@@ -249,7 +350,7 @@ public static void open(){
 
 	static String item;
 
-public static String sobitie(String fields[], boolean jcheckBox, boolean jcheckBox2, String jcomboBox,String jcomboBox1 ){//получение данных
+public static String sobitie (String fields[], boolean jcheckBox, boolean jcheckBox2, String jcomboBox,String jcomboBox1 ){//получение данных
 	int summa = 5000;
 	double srochno = 0.0;
 	double chistka = 0.0;
@@ -367,5 +468,5 @@ static void setUp(){
 	}
 	catch (IOException e){System.out.print(e);}
 }
-
+*/
 }
