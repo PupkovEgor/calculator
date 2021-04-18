@@ -11,11 +11,18 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 @WebServlet(name="Log", urlPatterns="/LogCalc")
 
 
 public class LogInReg extends HttpServlet {
+
+
 
     static byte go = 1;
 
@@ -51,11 +58,48 @@ public class LogInReg extends HttpServlet {
         }
 
         public void setAsRequestAttributesAndCalculate(HttpServletRequest request) {
-            boolean lo = false;
-            boolean swi = true;
-            boolean ch = false;
+            //boolean lo = false;
+            //boolean swi = true;
+            //boolean ch = false;
+            Connection con =null;
+            Statement stmt=null;
+            ResultSet rs=null;
             if (page.equals("LogIn")) {
                 try {
+                    con = getConnection();
+                    // opening database connection to MySQL server
+
+                    //con = DriverManager.getConnection(url, user, password);
+
+                    // getting Statement object to execute query
+                    stmt = con.createStatement();
+
+                    String query = "SELECT id from accounts where login like '"+log+"' and pass like '"+pas+"'";
+                    rs = stmt.executeQuery(query);
+
+                    if (rs.next()){
+                        go=1;
+                    }
+                    else{
+                        request.setAttribute("result", "Логин/Пароль не верен");
+                        go = 0;
+                    }
+
+                }catch (NullPointerException sqlNPE){
+                    request.setAttribute("result","Error: "+sqlNPE.getMessage());
+                    go = 0;
+                }
+                catch (SQLException sqlEx) {
+                    request.setAttribute("result","Error: "+sqlEx.getSQLState());
+                    go = 0;
+                }
+                finally {
+                    //close connection ,stmt and resultset here
+                    try {con.close(); } catch (NullPointerException sqn){ /**/} catch(SQLException se) { /* .*/ }
+                    try {stmt.close(); } catch (NullPointerException sqn){ /**/} catch(SQLException se) { /* .*/ }
+                    try {rs.close();  } catch (NullPointerException sqn){ /**/} catch(SQLException se) { /* .*/ }
+                }
+                /*try {
                     InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream("File.txt");
                     if (in!=null){
                     BufferedReader reader = new BufferedReader(new InputStreamReader(in));
@@ -84,11 +128,52 @@ public class LogInReg extends HttpServlet {
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
-                }
+                }*/
             }
+
             else{
                 go = 0;
                 try {
+                    // JDBC variables for opening and managing connection
+
+                     con = getConnection();
+                    // opening database connection to MySQL server
+
+                    //con = DriverManager.getConnection(url, user, password);
+
+                    // getting Statement object to execute query
+                    stmt = con.createStatement();
+
+                    String query = "SELECT id from accounts where login like '"+log+"'";
+                    rs = stmt.executeQuery(query);
+
+                    if (!rs.next()){
+                        query = "INSERT INTO accounts (login, pass) VALUES ('"+log+"', '"+pas+"');";
+                        stmt = con.createStatement();
+                        stmt.executeUpdate(query);
+                    }
+                    else{
+                        request.setAttribute("result", "Такой логин уже существует");
+                        go = 2;
+                    }
+                    //con.close();
+                    //stmt.close();
+                    //rs.close();
+                }catch (NullPointerException sqlNPE){
+                    request.setAttribute("result","Error: "+sqlNPE.getMessage());
+                    go = 2;
+                }
+                catch (SQLException sqlEx) {
+                    request.setAttribute("result","Error: "+sqlEx.getSQLState());
+                    go = 2;
+                } finally {
+                    //close connection ,stmt and resultset here
+                    try {con.close(); } catch (NullPointerException sqn){ /**/} catch(SQLException se) { /* .*/ }
+                    try {stmt.close(); } catch (NullPointerException sqn){ /**/} catch(SQLException se) { /* .*/ }
+                    try {rs.close();  } catch (NullPointerException sqn){ /**/} catch(SQLException se) { /* .*/ }
+                }
+
+               /* try {
                     InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream("File.txt");
                     if (in!=null){
                         BufferedReader reader = new BufferedReader(new InputStreamReader(in));
@@ -112,21 +197,40 @@ public class LogInReg extends HttpServlet {
                             reader.close();
                             FileWriter writer = new FileWriter("File.txt", true);
                             writer.write("\n"+log+"\n"+pas);
-                            /*FileOutputStream fos = new FileOutputStream("File.txt");
-                            BufferedOutputStream writer = new BufferedOutputStream(fos);
-                            byte[] buffer = log.getBytes();
-                            writer.write(buffer, 0, buffer.length);
-                            buffer = pas.getBytes();
-                            writer.write(buffer, 0, buffer.length);*/
+                            //FileOutputStream fos = new FileOutputStream("File.txt");
+                           // BufferedOutputStream writer = new BufferedOutputStream(fos);
+                           // byte[] buffer = log.getBytes();
+                           // writer.write(buffer, 0, buffer.length);
+                           // buffer = pas.getBytes();
+                           // writer.write(buffer, 0, buffer.length);
                         }
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
-                }
+                }*/
             }
         }
     }
+    public static Connection getConnection() {
+        String driver = "com.mysql.jdbc.Driver";
+        final String url = "jdbc:mysql://remotemysql.com:3306/smszCuaCce";
+        final String user = "smszCuaCce";
+        final String password = "fjrxusR9mP";
+        try {
+            Class.forName(driver);
+            java.sql.Connection con = DriverManager.getConnection(url,user,password);
+            return con;
+
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println("Exception " + e);
+            return null;
+        }
+    }
+
+
 }
+
+
 
 /*public class LogInReg {
 
