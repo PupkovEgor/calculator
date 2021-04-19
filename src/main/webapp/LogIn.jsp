@@ -6,32 +6,43 @@ pageEncoding="UTF-8"%>
 <meta charset="UTF-8">
 <title>Калькулятор расчета площади прямоугольника.</title>
 <style>
+body{
+	background: #121212;
+}
    .blok-center {
     width: 500px; /* Ширина блока */
     height: auto; /* Высота блока */
     margin: auto; /* Отступ от блока */
-    background: #ffffe0; /* Цвет фона блока */
-    border: 1px solid #000; /* Рамка блока */
+     /* Цвет фона блока */
+   background: #1c1c1c;
     padding: 10px; /* Отступ внутри блока */
+   }
+   .text{
+   color: #b3b3b3;
+   }
+   .combo{
+   background-color: #282828;
+   color: #b3b3b3;
+   font-size : 12pt;
    }
 </style>
 </head>
 <body>
 <div class="blok-center">
-<h1>Вход в калькулятор расчета стоимости частного дома</h1>
+<h1 class="text">Вход в калькулятор расчета стоимости частного дома</h1>
 <form action="${pageContext.request.contextPath}/LogCalc" method="post">
 <input type="hidden" name="page" id="LogIn" value="LogIn"/>
-<br><label for="login" >Логин: </label>
-<input type="text" name="login" id="login" value="${login}" required title="Число больше нуля, дробная часть отделяется точкой">
+<br><label for="login"  class="text">Логин: </label>
+<input type="text"  class="combo" name="login" id="login" value="${login}" required title="Число больше нуля, дробная часть отделяется точкой">
 <!--<strong>м</strong> pattern="(^[1-9](\d*)?([.]\d+)?)|(^0[.](\d*)?(?=[1-9])\d+)"-->
 </br>
-<br><label for="pass">Пароль: </label>
-<input type="text" name="pass" id="pass" value="${pass}" required  title="Число больше нуля, дробная часть отделяется точкой">
+<br><label  class="text" for="pass">Пароль: </label>
+<input  class="combo" type="text" name="pass" id="pass" value="${pass}" required  title="Число больше нуля, дробная часть отделяется точкой">
 <!--<strong>м</strong> pattern="(^[1-9](\d*)?([.]\d+)?)|(^0[.](\d*)?(?=[1-9])\d+)"-->
 </br>
-<br><input type="submit" name="sign" value="Вход"></br>
-<br><input type="button" name="gtreg" value="Регистрация" onclick="location.href='Reg.jsp'"></br>
-<p>${result}</p>
+<br><input  class="combo" type="submit" name="sign" value="Вход"></br>
+<br><input class="combo" type="button" name="gtreg" value="Регистрация" onclick="location.href='Reg.jsp'"></br>
+<p class="text">${result}</p>
 </form>
 </div>
 </body>
