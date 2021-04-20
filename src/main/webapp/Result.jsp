@@ -1,47 +1,56 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
-<!DOCTYPE HTML>
+﻿<!DOCTYPE HTML>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Результат</title>
+<meta charset="utf-8">
+<title>Пример веб-страницы</title>
 <style>
-   .blok-center {
-    float: left;
-    text-align: left;
-    width: 300px; /* Ширина блока */
-    height: auto; /* Высота блока */
-    margin: auto; /* Отступ от блока */
-    background: #ffffe0; /* Цвет фона блока */
-    border: 1px solid #000; /* Рамка блока */
-    padding: 10px; /* Отступ внутри блока */
+body{
+	background: #121212;
+}
+table {
+    margin: auto;
+   }
+   td {
+    text-align: center;
+     background: #1c1c1c;
+   }
+   p {
+    font-size: 20pt; /* Размер шрифта в пунктах */ 
+    background: #1c1c1c;
+   }
+   .cent{
+    color: #b3b3b3;
+	font-size: 25pt;
+   }
+   .text{
+   color: #b3b3b3;
+   }
+   .combo{
+   background-color: #282828;
+   color: #b3b3b3;
+   font-size : 12pt;
    }
 </style>
 </head>
 <body>
-<div class="blok-center">
-<p>Введенные габариты и результат:</p>
-<p>длина: ${result_length} </p>
-
-<p> ширина: ${result_width} </p>
-
-<p>высота: ${result_height}</p>
-
-<p> количество этажей: ${result_floor} </p>
-
-<p>доп. работников: ${result_worker} </p>
-
-<p>внутренняя отделка: ${result_otdelka} </p>
-  
-<p> Срочный заказ: ${result_order}</p>
-<p> Очистка участка: ${result_clearing}</p>
-<p>промокод: ${result_promo} </p>
-
-<p>готовые пресеты: ${result_preset} </p>
-
-<p>Результат: ${result} </p>
-
-<p> <input type="button" name="exit" value="Назад" onclick="location.href='Form.jsp'"> </р>
-</div>
+	<h1 style="font-size : 30pt; color: #b3b3b3; text-align:center; valign: top;">Калькулятор расчета строительства частного дома<h1>
+<table width=auto height=auto cellspacing="0" cellpadding="8" cols = "2">
+<tr><td colspan="2" align="center" class="cent">Ваши данные:</td></tr>
+<tr><td><p align="left"  class="text">Длина: ${result_length} м.</p></td>
+	<td><p align="left" class="text">Ширина: ${result_width} м.</p></td></tr>
+<tr><td><p align="left" class="text">Высота: ${result_height} м.</p></td>
+	<td><p align="left" class="text">Количество этажей: ${result_floor}</p></td></tr>
+<tr><td><p align="left" class="text">Доп. работников: ${result_worker} чел.</p></td>
+	<td><p align="left" class="text">Внутренняя отделка: ${result_otdelka} </p></td></tr>
+<tr><td><p align="left" class="text">Срочный заказ: ${result_order}</p></td>
+	<td><p align="left" class="text"> Очистка участка: ${result_clearing} </p></td></tr>
+<tr><td><p align="left" class="text">Промокод: ${result_promo}</p></td>
+	<td><p align="left" class="text">Готовые пресеты: ${result_preset}</p></td></tr>
+	<tr><td colspan="2" align="left"><p class="text" align = "left">Результат: ${result}</p></td></tr>
+	<tr><td><p align="left"> <input type="button" name="Cancel" value=" Назад" class="combo" onclick="location.href='Form.jsp'" style="font-size : 13pt;"></р></td>
+	<td><p align="left"> <input type="button" name="exit" value=" Выход из аккаунта" onclick="location.href='LogIn.jsp'" class="combo" style="font-size : 13pt;"> </р></td></tr>
+  </table>
 </body>
 </html>
