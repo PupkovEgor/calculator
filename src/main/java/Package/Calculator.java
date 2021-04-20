@@ -22,7 +22,17 @@ import javax.swing.JTextField;
 
 @WebServlet(name="Calc", urlPatterns="/Calculator")
 public class Calculator extends  HttpServlet   {
-	
+	public static String dlina;
+	public static String shirina;
+	public static String visota;
+	public static String floor_count;
+	public static String worker_count;
+	public static String otdelka;
+	public static boolean express_order;
+	public static boolean clearing;
+	public static String promo;
+	public static String preset;
+	static String[] fields;
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestCalc Calc = RequestCalc.fromRequestParameters(request);
 		Calc.setAsRequestAttributesAndCalculate(request);
@@ -41,9 +51,9 @@ public class Calculator extends  HttpServlet   {
 		private final String clear;
 		private final String pr;
 		private  String pres;
-		//private final String shirina;
+		private  String shirina;
 		
-		private double result;
+		private String result;
 						
 		private RequestCalc (String dlina, String shirina, String visota, String floor_count, String worker_count, String otdelka, String order, String clearing, String promo, String preset) {
 			this.dl = dlina;
@@ -81,7 +91,7 @@ public class Calculator extends  HttpServlet   {
 		}
 			
 			switch (pres){
-            case "1": pres = "Персональный "; break;
+            case "1": pres = "Персональный"; break;
             case "2": pres = "Летний дом"; break;
             case "3": pres = "Зимний дом"; break;
 		}
@@ -92,29 +102,50 @@ public class Calculator extends  HttpServlet   {
 			request.setAttribute("result_worker", rab_count);
 			request.setAttribute("result_otdelka", otd);
 			if (ord != null){
-                request.setAttribute("result_order", "Да");}
+                request.setAttribute("result_order", "Да");
+                express_order = true;
+			}
             else{
                 request.setAttribute("result_order", "Нет");
+                express_order = false;
             }
             if (clear != null){
-                request.setAttribute("result_clearing", "Да");}
+                request.setAttribute("result_clearing", "Да");
+                clearing = true;
+            }
             else{
                 request.setAttribute("result_clearing", "Нет");
+                clearing = false;
             }
 			request.setAttribute("result_promo", pr);
 			request.setAttribute("result_preset", pres);
 			
+			dlina = dl;
+			shirina = sh;
+			visota = vis;
+			floor_count = fl_count;
+			worker_count = rab_count;
+			otdelka = otd;
+			promo = pr;
+			preset = pres;
 			
-			
-			double length_try;
+			/*double length_try;
 			double width_try;
 			double height_try;
 			double floor_try;
-			double worker_try;
+			double worker_try;*/
 			
+			fields = new String[6];
+			fields[0]=dlina;
+			fields[1]=shirina;
+			fields[2]=visota;
+			fields[3]=floor_count;
+			fields[4]=worker_count;
+			fields[5]=promo;
 			
-			
-			try { 
+			result = sobitie(fields,express_order,clearing,otdelka,preset);
+			request.setAttribute("result", result);
+			/*try { 
 			length_try=Double.parseDouble(dl);
 			width_try=Double.parseDouble(sh);
 			height_try=Double.parseDouble(vis);
@@ -130,187 +161,31 @@ public class Calculator extends  HttpServlet   {
 				 height_try = 0;
 				 floor_try = 0;
 				 worker_try = 0;	
-			}
+			}*/
 			
-			result=length_try + width_try + height_try + floor_try + worker_try;
-			request.setAttribute("result", result);
 		}
 		
 	}
 	
 
-/*static JLabel[] labels;
-static JTextField[] fields;
-static	JComboBox jcomboBox;
+
 static double[] sum;
 static double[] win;
 
 
-public static void Window() {
-	
-	JFrame  MainWindow = new JFrame("Калькулятор стоимости строительства частного дома");	
-	MainWindow.setTitle ("Калькулятор стоимости строительства частного дома");
-	MainWindow.setBounds(100,100,520,410);
-	MainWindow.setResizable(false); 
-	
-	labels = new JLabel[13];
-	for(int i = 0; i < 11; i++) {
-		labels[i] = new JLabel();
-
-	}
-	labels[0].setText("Габариты: ");
-	labels[1].setText("Длина: ");
-	labels[2].setText("Ширина: ");
-	labels[3].setText("Высота: ");
-	labels[4].setText("Кол. этажей: ");
-	labels[5].setText("Доп. работники: ");
-	labels[6].setText("Внутренняя отделка: ");
-	labels[7].setText("Срочный заказ: ");
-	labels[8].setText("Расчистка участ	ка: ");
-	labels[9].setText("Промокод: ");
-	labels[10].setText("Итого: ");
-	
-	fields = new JTextField[6];
+//public static void Window() {
 	
 	
-	
-		
-	
-	for(int i = 0; i < 6; i++) {
-		fields[i] = new JTextField();
-		
-	}
-	
-	for(int i = 0; i < 5; i++) {
-		fields[i].setBounds(135, (30 * i) + 40, 150, 30);
-		
-
-	}
-	fields[4].setText("0");
-	
-	fields[5].setBounds(135, 280, 150, 30);
-	
-	JPanel main_panel = new JPanel();
-	
-	for(int i = 0 ; i < 11; i++) {
-		labels[i].setBounds(5, (30 * i) + 10 , 130, 30);
-	}
-	
-	String[] arrayBox  = { // создание элементов для jcombobox
-            "Нет",
-            "Черновая отделка",
-            "Под ключ"
-    };
-	
-	String[] arrayBox1  = { // создание элементов для jcombobox
-			"Персональный",
-			"Летний дом",
-			"Зимний дом"
-	};
-	
-	
-	
-    jcomboBox = new JComboBox(arrayBox);//создание jcombobox
-    jcomboBox.setBounds(135, 190, 150, 30);
-    JComboBox jcomboBox1 = new JComboBox(arrayBox1);//создание jcombobox
-	jcomboBox1.setBounds(290, 40, 150, 30);
-	
-    
-    JCheckBox jcheckBox = new JCheckBox();
-    JCheckBox jcheckBox2 = new JCheckBox();
-
-    jcheckBox.setBounds(135, 220, 30, 30);
-    jcheckBox2.setBounds(135, 250, 30, 30);
-
-    
-    
-	main_panel.add(jcheckBox);
-	main_panel.add(jcheckBox2);
-	main_panel.add(jcomboBox1);
-	main_panel.add(jcomboBox);
-
-
-
-	for(int i = 0; i < 6; i++) {
-		main_panel.add(fields[i]);
-	}
-
-	
-	
-	for(int i = 0; i < 11; i++) {
-		main_panel.add(labels[i]);
-	}
-	
-	JButton infoB = new JButton("Информация");
-	ActionListener actionListener = new WinInfo(); //создаем слушатель
-	infoB.addActionListener(actionListener);
-	
-	infoB.setBounds(380,280, 110, 30);
-	
-	main_panel.add(infoB);
-	
-	
-    JButton button_calc = new JButton("Расчет"); // Добавление кнопки расчета
-    button_calc.setBounds(360,230,140,30); // задаём ей координаты
-    
-    main_panel.add(button_calc); //добавление кнопки расчета на главную панель
-    
-     
-    
-   
-    JButton buttonLeave = buttonCreate(); // создание кнопки "Выход"
-    buttonLeave.setBounds(360,325,140,30);
-    buttonLeave.addActionListener(actionEvent ->  {
-       	System.exit(1);
-    	
-    	 });
-   
-    main_panel.add(buttonLeave);
-   
-    labels[10].setBounds(5, 310 , 280, 30);
-    
-    jcomboBox1.addActionListener (new ActionListener () {
-		public void actionPerformed(ActionEvent e) {
-			preset((String)jcomboBox1.getSelectedItem());
-		}
-	});
-
-
-    ActionListener actionListenerCalc = new ActionListener() { //слушатель расчета
-    	
-        public void actionPerformed(ActionEvent e) {
-        	String f[] = new String[6];
-        	for(int i = 0 ; i < 6; i++) {
-        		f[i]= fields[i].getText(); // Приравние массива field c получением текста к массиву f
-        	}
-        	labels[10].setText(sobitie(f,jcheckBox.isSelected(),jcheckBox2.isSelected(),(String)jcomboBox.getSelectedItem(),(String)jcomboBox1.getSelectedItem()));
-        	// добавление данных в метод sobitie
-        }
-    };
-
-
-    button_calc.addActionListener(actionListenerCalc); //добавляем слушатель к кнопке
-	main_panel.setLayout(null);
-	MainWindow.add(main_panel);
-	MainWindow.setVisible(true);
-	MainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-}
 
 static Dom dom;
-public static JButton buttonCreate() { //метод создания кнопки "Выход"
-	JButton buttonLeave = new JButton();
-	buttonLeave.setText("Выход");
-	
-	return buttonLeave;
-}
+
 
 public static void preset(String jcomboBox1){
 	setUp();
-	switch (jcomboBox1){
+	switch (preset){
 		case "Персональный":{
 			dom = new PersonalHouse();
-			open();
+			
 			break;
 			
 		}
@@ -344,30 +219,19 @@ public static void close(){
 		case "Нет": {a=0;break;}
 		case "Под ключ": {a=2;break;}
 	}
-	fields[0].setEditable(false);
-	fields[1].setEditable(false);
-	fields[2].setEditable(false);
-	fields[3].setEditable(false);
-	jcomboBox.setSelectedIndex(a);
-	jcomboBox.setEnabled(false);
-	fields[0].setText(Double.toString(dom.getLenght()));
-	fields[1].setText(Double.toString(dom.getWeight()));
-	fields[2].setText(Double.toString(dom.getVisota()));
-	fields[3].setText(Integer.toString(dom.getKolE()));
+	
+	fields[0] = Double.toString(dom.getLenght());
+	fields[1] = Double.toString(dom.getWeight());
+	fields[2] = Double.toString(dom.getVisota());
+	fields[3] = Integer.toString(dom.getKolE());
+	
+}
 
-}
-public static void open(){
-	fields[0].setEditable(true);
-	fields[1].setEditable(true);
-	fields[2].setEditable(true);
-	fields[3].setEditable(true);
-	jcomboBox.setEnabled(true);
-}
 
 
 	static String item;
 
-public static String sobitie (String fields[], boolean jcheckBox, boolean jcheckBox2, String jcomboBox,String jcomboBox1 ){//получение данных
+public static String sobitie (String fields[], boolean express_order, boolean clearing, String otdelka,String jcomboBox1 ){//получение данных
 	int summa = 5000;
 	double srochno = 0.0;
 	double chistka = 0.0;
@@ -385,10 +249,10 @@ public static String sobitie (String fields[], boolean jcheckBox, boolean jcheck
 		break;
 	}
 	
-	if (jcheckBox ) {
+	if (express_order ) {
 		srochno = 10000.0;
 	}
-	if (jcheckBox2 ) {
+	if (clearing ) {
 		chistka = 5000.0;
 	}
 
@@ -419,18 +283,25 @@ public static String sobitie (String fields[], boolean jcheckBox, boolean jcheck
         	 }else {
         		 if (jcomboBox1.equals("Персональный")){
 					 dom = new PersonalHouse();
+					 
 					 dom.setLenght(a);
 					 dom.setWeight(b);
 					 dom.setKolE(f);
 					 dom.setVisota(c);
+					 
 				 }
 
         		 rabotnik = rabotnik * summa;
         		 Home home = new House();
-        		 Otdelka otdelka = new House();
-        		 String item = (String)jcomboBox;
+        		 Otdelka otdelka_type = new House();
+        		 String item = (String)otdelka;
+        		 //System.out.print(dom.getWeight());
+        		 
+        		 
+        		 
+        		 
         		 String result =String.format("%.2f",(home.GetPrice(dom.getLenght(),dom.getWeight(),dom.getVisota(),dom.getKolE())+
-				 otdelka.OtdelkaPrice(item,dom.getLenght()*dom.getWeight(),dom.getKolE())+ srochno + chistka + rabotnik)*promo);// Расчет итоговой стоимости
+				 otdelka_type.OtdelkaPrice(otdelka,dom.getLenght()*dom.getWeight(),dom.getKolE())+ srochno + chistka + rabotnik)*promo);// Расчет итоговой стоимости
 				 return "Итого: " + result + " руб.";
         	 }
          }
@@ -485,5 +356,5 @@ static void setUp(){
 	}
 	catch (IOException e){System.out.print(e);}
 }
-*/
+
 }
