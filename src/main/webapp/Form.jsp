@@ -74,6 +74,7 @@ table {
 </style>
 </head>
 <body>
+	<form action="${pageContext.request.contextPath}/Calculator" method="post">
 	<h1 style="font-size : 30pt; color: #b3b3b3; text-align:center; valign:top;" >Калькулятор расчета строительства частного дома<h1>
   <table width=auto height=auto cellspacing="0" cellpadding="5" cols = "4" >
   	<tr><td colspan="4" align="center" class="cent">Габариты:</td></tr>
@@ -129,5 +130,6 @@ table {
 		</select></p>
 		<tr><td><p align="left"> <input type="button" name="ready" value=" Применить настройки" class="combo" style="font-size : 13pt;"></р></td>
     </div>
+    </form>
 </body>
 </html>
