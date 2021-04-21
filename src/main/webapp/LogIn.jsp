@@ -4,7 +4,7 @@ pageEncoding="UTF-8"%>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Калькулятор расчета площади прямоугольника.</title>
+<title>Вход в калькулятор</title>
 <style>
 body{
 	background: #121212;
@@ -29,7 +29,7 @@ body{
 </head>
 <body>
 <div class="blok-center">
-<h1 class="text">Вход в калькулятор расчета стоимости частного дома</h1>
+<h1 class="text">Вход в калькулятор </h1>
 <form action="${pageContext.request.contextPath}/LogCalc" method="post">
 <input type="hidden" name="page" id="LogIn" value="LogIn"/>
 <br><label for="login"  class="text">Логин: </label>
@@ -37,7 +37,7 @@ body{
 <!--<strong>м</strong> pattern="(^[1-9](\d*)?([.]\d+)?)|(^0[.](\d*)?(?=[1-9])\d+)"-->
 </br>
 <br><label  class="text" for="pass">Пароль: </label>
-<input  class="combo" type="text" name="pass" id="pass" value="${pass}" required  title="Число больше нуля, дробная часть отделяется точкой">
+<input  class="combo" type="password" name="pass" id="pass" value="${pass}" required  title="Число больше нуля, дробная часть отделяется точкой">
 <!--<strong>м</strong> pattern="(^[1-9](\d*)?([.]\d+)?)|(^0[.](\d*)?(?=[1-9])\d+)"-->
 </br>
 <br><input  class="combo" type="submit" name="sign" value="Вход"></br>
