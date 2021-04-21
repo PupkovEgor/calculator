@@ -29,7 +29,7 @@ body{
 </head>
 <body>
 <div class="blok-center">
-<h1 class="text">Вход в калькулятор расчета стоимости частного дома</h1>
+<h1 class="text">Регистрация пользователя</h1>
 <form action="${pageContext.request.contextPath}/LogCalc" method="post">
 <input type="hidden" name="page" id="Reg" value="Reg"/>
 <br><label class="text" for="login" >Логин: </label>
