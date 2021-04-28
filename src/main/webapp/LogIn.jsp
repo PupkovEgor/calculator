@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+﻿<!DOCTYPE HTML>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <title>Вход в калькулятор</title>
 <style>
 body{
@@ -32,12 +32,13 @@ body{
 <h1 class="text">Вход в калькулятор </h1>
 <form action="${pageContext.request.contextPath}/LogCalc" method="post">
 <input type="hidden" name="page" id="LogIn" value="LogIn"/>
-<br><label for="login"  class="text">Логин: </label>
-<input type="text"  class="combo" name="login" id="login" value="${login}" required title="Число больше нуля, дробная часть отделяется точкой">
+<input type="hidden" name="fio" id="fio" value=""/>
+<br>
+<input type="text" placeholder="Логин" class="combo" name="login" id="login" value="${login}" required title="Введите ваш логин">
 <!--<strong>м</strong> pattern="(^[1-9](\d*)?([.]\d+)?)|(^0[.](\d*)?(?=[1-9])\d+)"-->
 </br>
-<br><label  class="text" for="pass">Пароль: </label>
-<input  class="combo" type="password" name="pass" id="pass" value="${pass}" required  title="Число больше нуля, дробная часть отделяется точкой">
+<br>
+<input  class="combo" placeholder="Пароль" type="password" name="pass" id="pass" value="${pass}" required  title="Введите ваш пароль">
 <!--<strong>м</strong> pattern="(^[1-9](\d*)?([.]\d+)?)|(^0[.](\d*)?(?=[1-9])\d+)"-->
 </br>
 <br><input  class="combo" type="submit" name="sign" value="Вход"></br>

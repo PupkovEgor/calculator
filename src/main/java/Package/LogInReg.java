@@ -27,6 +27,8 @@ public class LogInReg extends HttpServlet {
     static byte go = 1;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
         RequestCalc Calc = RequestCalc.fromRequestParameters(request);
         Calc.setAsRequestAttributesAndCalculate(request);
 
@@ -41,18 +43,21 @@ public class LogInReg extends HttpServlet {
         private final String log;
         private final String pas;
         private final String page;
+        private final String fio;
 
-        private RequestCalc (String first, String second,String page) {
+        private RequestCalc (String first, String second,String page,String fio) {
             this.log = first;
             this.pas = second;
             this.page = page;
+            this.fio = fio;
         }
 
         public static RequestCalc fromRequestParameters(HttpServletRequest request) {
             return new RequestCalc(
                     request.getParameter("login"),
                     request.getParameter("pass"),
-                    request.getParameter("page")
+                    request.getParameter("page"),
+                    request.getParameter("fio")
                     );
 
         }
@@ -99,36 +104,7 @@ public class LogInReg extends HttpServlet {
                     try {stmt.close(); } catch (NullPointerException sqn){ /**/} catch(SQLException se) { /* .*/ }
                     try {rs.close();  } catch (NullPointerException sqn){ /**/} catch(SQLException se) { /* .*/ }
                 }
-                /*try {
-                    InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream("File.txt");
-                    if (in!=null){
-                    BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-                    String line;
-                    while ((line = reader.readLine()) != null) {
-                        if (swi) {
-                            swi = false;
-                            if (log.equals(line)) {
-                                lo = true;
-                            }
-                        } else {
-                            swi = true;
-                            if (lo && pas.equals(line)) {
-                                go = 1;
-                                ch = true;
-                                break;
-                            } else {
-                                lo = false;
-                            }
-                        }
-                    }
-                    if (!ch) {
-                        request.setAttribute("result", "Логин/Пароль не верен");
-                        go = 0;
-                    }
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }*/
+
             }
 
             else{
@@ -146,9 +122,8 @@ public class LogInReg extends HttpServlet {
 
                     String query = "SELECT id from accounts where login like '"+log+"'";
                     rs = stmt.executeQuery(query);
-
                     if (!rs.next()){
-                        query = "INSERT INTO accounts (login, pass) VALUES ('"+log+"', '"+pas+"');";
+                        query = "INSERT INTO accounts (login, pass, fio) VALUES ('"+log+"', '"+pas+"', '"+fio+"');";
                         stmt = con.createStatement();
                         stmt.executeUpdate(query);
                     }
@@ -160,11 +135,11 @@ public class LogInReg extends HttpServlet {
                     //stmt.close();
                     //rs.close();
                 }catch (NullPointerException sqlNPE){
-                    request.setAttribute("result","Error: "+sqlNPE.getMessage());
+                    request.setAttribute("result","1Error: "+sqlNPE.getMessage());
                     go = 2;
                 }
                 catch (SQLException sqlEx) {
-                    request.setAttribute("result","Error: "+sqlEx.getSQLState());
+                    request.setAttribute("result","2Error: "+sqlEx.getSQLState());
                     go = 2;
                 } finally {
                     //close connection ,stmt and resultset here
@@ -173,41 +148,6 @@ public class LogInReg extends HttpServlet {
                     try {rs.close();  } catch (NullPointerException sqn){ /**/} catch(SQLException se) { /* .*/ }
                 }
 
-               /* try {
-                    InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream("File.txt");
-                    if (in!=null){
-                        BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-                        String line;
-                        while ((line = reader.readLine()) != null) {
-                            if (swi) {
-                                swi = false;
-                                if (log.equals(line)) {
-                                    ch = true;
-                                    break;
-                                }
-                            } else {
-                                swi = true;
-                            }
-                        }
-                        if (ch) {
-                            request.setAttribute("result", "Такой логин уже существует");
-                            go = 2;
-                        }
-                        else{
-                            reader.close();
-                            FileWriter writer = new FileWriter("File.txt", true);
-                            writer.write("\n"+log+"\n"+pas);
-                            //FileOutputStream fos = new FileOutputStream("File.txt");
-                           // BufferedOutputStream writer = new BufferedOutputStream(fos);
-                           // byte[] buffer = log.getBytes();
-                           // writer.write(buffer, 0, buffer.length);
-                           // buffer = pas.getBytes();
-                           // writer.write(buffer, 0, buffer.length);
-                        }
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }*/
             }
         }
     }
