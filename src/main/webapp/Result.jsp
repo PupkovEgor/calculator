@@ -49,7 +49,7 @@ table {
 <tr><td><p align="left" class="text">Промокод: ${result_promo}</p></td>
 	<td><p align="left" class="text">Готовые пресеты: ${result_preset}</p></td></tr>
 	<tr><td colspan="2" align="left"><p class="text" align = "left">Результат: ${result}</p></td></tr>
-	<tr><td><p align="left"> <input type="button" name="Cancel" value=" Назад" class="combo" onclick="location.href='Form.jsp'" style="font-size : 13pt;"></р></td>
+	<tr><td><p align="left"> <input type="button" name="Cancel" value=" Назад" class="combo" onclick="history.back()" style="font-size : 13pt;"></р></td>
 	<td><p align="left"> <input type="button" name="exit" value=" Выход из аккаунта" onclick="location.href='LogIn.jsp'" class="combo" style="font-size : 13pt;"> </р></td></tr>
   </table>
 </body>
