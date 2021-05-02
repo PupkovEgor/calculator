@@ -91,12 +91,12 @@ public class LogInReg extends HttpServlet {
                             query1 = "SELECT "+arr[i]+" FROM settings WHERE type='uptWinter';";
                             rs1 = stmt.executeQuery(query1);
                             if (rs1.next()){
-                            request.setAttribute("summer"+i,rs1.getString(arr[i]));
+                            request.setAttribute("winter"+i,rs1.getString(arr[i]));
                             }
                             query1 = "SELECT "+arr[i]+" FROM settings WHERE type='uptSummer';";
                             rs1 = stmt.executeQuery(query1);
                             if (rs1.next()){
-                                request.setAttribute("winter"+i,rs1.getString(arr[i]));
+                                request.setAttribute("summer"+i,rs1.getString(arr[i]));
                             }
                         }
                     }
