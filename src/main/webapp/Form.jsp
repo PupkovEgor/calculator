@@ -103,18 +103,18 @@ table {
   <table width=auto height=auto cellspacing="0" cellpadding="5" cols = "4" style="display: inline-table;">
   	<tr><td colspan="4" align="center" class="cent">Габариты:</td></tr>
 	<tr><td colspan="2"><p align="left"  class="text">Длина:</p> </td><td colspan="2"><p align="left" class="text">Ширина:</p> </td></tr>
-	<tr><td> <input type="text" name="length" value= "${length}" size="20" class="combo"></td><td> <p align="left"  class="text" style="font-size: 16pt;">м.</p></td><td><input type="text" name="width"  value= "${width}" size="20"class="combo"> </td><td><p align="left"  class="text" style="font-size: 16pt;">м.</p> </td></tr>
+	<tr><td> <input type="text" id = "length" name="length" value= "${length}" size="20" class="combo"></td><td> <p align="left"  class="text" style="font-size: 16pt;">м.</p></td><td><input type="text" id = "width" name="width"  value= "${width}" size="20"class="combo"> </td><td><p align="left"  class="text" style="font-size: 16pt;">м.</p> </td></tr>
 	<tr><td colspan="2"><p align="left" class="text">Высота:</p> </td><td colspan="2"><p align="left" class="text">Количество этажей:</p> </td></tr>
-	<tr><td> <input type="text" name="height" value= "${height}" size="20"class="combo"></td><td><p align="left"  class="text" style="font-size: 16pt;">м.</p> </td><td><input type="text" name="floor"  value= "${floor}" size="20"class="combo"></td><td colspan="2"><p align="left"  class="text" style="font-size: 16pt;"></p> </td></tr>
+	<tr><td> <input type="text" id = "height" name="height" value= "${height}" size="20"class="combo"></td><td><p align="left"  class="text" style="font-size: 16pt;">м.</p> </td><td><input type="text" id = "floor" name="floor"  value= "${floor}" size="20"class="combo"></td><td colspan="2"><p align="left"  class="text" style="font-size: 16pt;"></p> </td></tr>
 	<tr><td colspan="2"><p align="left" class="text">Доп. работников: </p> </td><td colspan="2"> <p align="left" class="text">Внутренняя отделка:</p></td></tr>
-	<tr><td><input type="text" name="worker"  value= "${worker}" size="20"class="combo" > </td><td><p align="left"  class="text" style="font-size: 16pt;">чел.</p> </td><td colspan="2"> <select name="otdelka" value= "${otdelka}" class="combo">
+	<tr><td><input type="text" name="worker"  value= "${worker}" size="20"class="combo" > </td><td><p align="left"  class="text" style="font-size: 16pt;">чел.</p> </td><td colspan="2"> <select id = "otdelka" name="otdelka" value= "${otdelka}" class="combo">
 		<option value="1">Heт</option>
 		<option value="2">Чepнoвaя</option>
 		<option value="3">Под ключ</option>
 		</select></td></tr>
 	<tr><td colspan="2"><p align="left" class="text">Срочный заказ:<input type="checkbox"  name="order" value= "${order}"> </p> </td><td colspan="2"><p align="left" class="text"> Очистка участка: <input type="checkbox"  name="clearing" value= "${clearing}"> </p> </td></tr>
 	<tr><td colspan="2"><p align="left" class="text">Промокод:</p> </td><td colspan="2"><p align="left" class="text">Готовые пресеты :</p> </td></tr>
-	<tr><td colspan="2"><input type="text" name="promo" value= "${promo}" size="20"class="combo" > </td><td colspan="2"> <select name="preset"  value= "${preset}" class="combo">
+	<tr><td colspan="2"><input type="text" name="promo" value= "${promo}" size="20"class="combo" > </td><td colspan="2"> <select name="preset" id="preset" value= "${preset}" class="combo">
 		<option value="1">Персональный</option>
 		<option value="2">Летний дом</option>
 		<option value="3">Зимний дом</option>
@@ -131,17 +131,17 @@ table {
   document.getElementById('info').style.display='block';" style=" font-size : 13pt; display:none;">
 
 	 </p></td></tr>
-	<tr><td colspan="2"> <p align="left"> <input type="button" name="settings" value=" Смена настроек " class="combo" style="font-size : 13pt;" onclick="location.hash ='dop'" ></p>	</td><td colspan="2"><p align="left"><input type="button" name="exit" value=" Выход из аккаунта" onclick="location.href='LogIn.jsp'" class="combo" style="font-size : 13pt;"> 	</td></tr>
+	<tr><td colspan="2"> <p align="left"> <input id="settings" type="button" name="settings" value=" Смена настроек " class="combo" style="font-size : 13pt;" onclick="location.hash ='dop'" ></p>	</td><td colspan="2"><p align="left"><input type="button" name="exit" value=" Выход из аккаунта" onclick="location.href='LogIn.jsp'" class="combo" style="font-size : 13pt;"> 	</td></tr>
   </table>
 
      <div id="dop" class="okno" style="font-size : 14pt; color: #b3b3b3; " >
 	 <table>
      	 <tr><td><div align="right" style="position:static;"><a href="#" style="text-decoration: none;text-align: right; color:#b3b3b3;">&#215;</a></div></td></tr>
-		 <tr><td style="height:60px;"><p style="text-align:left;" class="text">Вид дома для изменения:<br><select name="otdelka1" value= "${otdelka}" class="combo">
-		<option value="1">Летний дом</option>
+		 <tr><td style="height:60px;"><p style="text-align:left;"  class="text">Вид дома для изменения:<br><select name="otdelka1" value= "${otdelka}" class="combo">
+		<option  value="1">Летний дом</option>
 		<option value="2">Зимний дом</option>
 		</select></p></td></tr>
-      <tr><td style="height:60px;"><p align="left"  class="text">Длина:<br><input type="text" name="length" value= "${length}" size="20" class="combo"> </p></td></tr>
+      <tr><td style="height:60px;"><p align="left"  class="text">Длина:<br><input id="length" type="text" name="length" value= "${length}" size="20" class="combo"> </p></td></tr>
       <tr><td style="height:60px;"><p align="left" class="text">Ширина:<br><input type="text" name="width"  value= "${width}" size="20"class="combo"> </p></td></tr>
       <tr><td style="height:60px;"><p align="left" class="text">Высота:<br><input type="text" name="height" value= "${height}" size="20"class="combo"></p></td></tr>
       <tr><td style="height:60px;"><p align="left" class="text">Количество этажей:<br><input type="text" name="floor"  value= "${floor}" size="20"class="combo"></p></td></tr>
@@ -173,21 +173,49 @@ table {
  <script>
      function setV(a){
      if (a==1){
-        document.getElementById('settings').type = 'button';}
+        document.getElementById('length').disabled = true ; }
+
         else{
         document.getElementById('settings').type = 'hidden';
         }
      }
 
-     var s = document.getElementById('Sel');
+     var s = document.getElementById('preset');
      s.addEventListener('change', setPre);
      function setPre(){
      var ch = s.value;
-     if (ch==='2'){
-     document.getElementById('length').value = "3";
+     if (ch==='1'){
+
+     document.getElementById('length').disabled = false;
+     document.getElementById('width').disabled = false;
+     document.getElementById('height').disabled = false;
+     document.getElementById('floor').disabled = false;
+     document.getElementById('otdelka').disabled = false;
      }
      if (ch==='3'){
-     document.getElementById('length').value = "4";
+     
+     document.getElementById('length').value = document.getElementById('winter0').value;
+     document.getElementById('length').disabled = true;
+     document.getElementById('width').value = document.getElementById('winter1').value;
+     document.getElementById('width').disabled = true;
+     document.getElementById('height').value = document.getElementById('winter2').value;
+     document.getElementById('height').disabled = true;
+     document.getElementById('floor').value = document.getElementById('winter3').value;
+     document.getElementById('floor').disabled = true;
+     document.getElementById('otdelka').value = document.getElementById('winter4').value;;
+     document.getElementById('otdelka').disabled = true;
+     }
+     if (ch==='2'){
+     document.getElementById('length').value = document.getElementById('summer0').value;
+     document.getElementById('width').value = document.getElementById('summer1').value;
+     document.getElementById('height').value = document.getElementById('summer2').value;
+     document.getElementById('floor').value = document.getElementById('summer3').value;
+     document.getElementById('otdelka').value = document.getElementById('summer4').value;
+     document.getElementById('length').disabled = true;
+     document.getElementById('width').disabled = true;
+     document.getElementById('height').disabled = true;
+     document.getElementById('floor').disabled = true;
+     document.getElementById('otdelka').disabled = true;
      }
      }
      </script>
