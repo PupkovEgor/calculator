@@ -45,7 +45,7 @@ public class Calculator extends  HttpServlet   {
 		private final String sh;
 		private final String vis;
 		private final String fl_count;
-		private final String rab_count;
+		private  String rab_count;
 		private  String otd;
 		private final String ord;
 		private final String clear;
@@ -95,6 +95,9 @@ public class Calculator extends  HttpServlet   {
             case "2": pres = "Летний дом"; break;
             case "3": pres = "Зимний дом"; break;
 		}
+			if (rab_count.equals("")) {
+				rab_count = "0";
+			}
 			request.setAttribute("result_length", dl);
 			request.setAttribute("result_width", sh);
 			request.setAttribute("result_height", vis);
@@ -181,38 +184,36 @@ static Dom dom;
 
 
 public static void preset(String jcomboBox1){
-	setUp();
+	//setUp();
 	switch (preset){
-		case "Персональный":{
+		/*case "Персональный":{
 			dom = new PersonalHouse();
-			
 			break;
 			
-		}
+		}*/
 		case "Летний дом":{
 			dom = new SummerHouse();
-			dom.setLenght(sum[0]);
-			dom.setWeight(sum[1]);
-			dom.setKolE((int)sum[2]);
-			dom.setVisota(sum[3]);
+			dom.setLenght(Double.parseDouble(fields[0]));
+			dom.setWeight(Double.parseDouble(fields[1]));
+			dom.setKolE(Integer.parseInt(fields[3]));
+			dom.setVisota(Double.parseDouble(fields[2]));
 			dom.setVnOt();
-			close();
+			//close();
 			break;
 		}
 		case "Зимний дом":{
 			dom = new WinterHouse();
-			dom.setLenght(win[0]);
-			dom.setWeight(win[1]);
-			dom.setKolE((int)win[2]);
-			dom.setVisota(win[3]);
-			dom.setVnOt();
-			close();
+			dom.setLenght(Double.parseDouble(fields[0]));
+			dom.setWeight(Double.parseDouble(fields[1]));
+			dom.setKolE(Integer.parseInt(fields[3]));
+			dom.setVisota(Double.parseDouble(fields[2]));
+			//close();
 			break;
 		}
 	}
 }
 
-public static void close(){
+/*public static void close(){
 	int a=0;
 	
 	switch(dom.getVnOt()){
@@ -225,7 +226,7 @@ public static void close(){
 	fields[2] = Double.toString(dom.getVisota());
 	fields[3] = Integer.toString(dom.getKolE());
 	
-}
+}*/
 
 
 
@@ -297,12 +298,12 @@ public static String sobitie (String fields[], boolean express_order, boolean cl
         		 String item = (String)otdelka;
         		 //System.out.print(dom.getWeight());
         		 
-        		 
+        		 preset(jcomboBox1);
         		 
         		 
         		 String result =String.format("%.2f",(home.GetPrice(dom.getLenght(),dom.getWeight(),dom.getVisota(),dom.getKolE())+
 				 otdelka_type.OtdelkaPrice(otdelka,dom.getLenght()*dom.getWeight(),dom.getKolE())+ srochno + chistka + rabotnik)*promo);// Расчет итоговой стоимости
-				 return "Итого: " + result + " руб.";
+				 return result + " руб.";
         	 }
          }
        
@@ -316,9 +317,10 @@ public static String sobitie (String fields[], boolean express_order, boolean cl
     
 }
 
-static void setUp(){
+/*static void setUp(){
 	sum = new double[4];
 	win = new double[4];
+	
 	int last;
 	String s;
 	String subs;
@@ -328,7 +330,16 @@ static void setUp(){
 			Scanner scanner = new Scanner(file);
 			while (scanner.hasNextLine()) {
 				s = scanner.nextLine();
-				if (s.startsWith("$sum")) {
+				if (s.s.dl = dlina;
+			this.sh = shirina;
+			this.vis = visota;
+			this.fl_count = floor_count;
+			this.rab_count = worker_count;
+			this.otd = otdelka;
+			this.ord = order;
+			this.clear = clearing;			
+			this.pr = promo;
+			this.pres = preset;startsWith("$sum")) {
 					for (int i =3;i>=0; i--){
 						last = s.lastIndexOf(" ");
 						subs = s.substring(last,s.length());
@@ -355,6 +366,6 @@ static void setUp(){
 		}
 	}
 	catch (IOException e){System.out.print(e);}
-}
+}*/
 
 }
