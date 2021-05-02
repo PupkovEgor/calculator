@@ -59,7 +59,6 @@ public class LogInReg extends HttpServlet {
                     request.getParameter("page"),
                     request.getParameter("fio")
                     );
-
         }
 
         public void setAsRequestAttributesAndCalculate(HttpServletRequest request) {
@@ -89,12 +88,12 @@ public class LogInReg extends HttpServlet {
                         String query1;
 
                         for(int i =0;i<5;i++){
-                            query1 = "SELECT "+arr[i]+" FROM settings WHERE type='winter';";
+                            query1 = "SELECT "+arr[i]+" FROM settings WHERE type='uptWinter';";
                             rs1 = stmt.executeQuery(query1);
                             if (rs1.next()){
                             request.setAttribute("summer"+i,rs1.getString(arr[i]));
                             }
-                            query1 = "SELECT "+arr[i]+" FROM settings WHERE type='summer';";
+                            query1 = "SELECT "+arr[i]+" FROM settings WHERE type='uptSummer';";
                             rs1 = stmt.executeQuery(query1);
                             if (rs1.next()){
                                 request.setAttribute("winter"+i,rs1.getString(arr[i]));
