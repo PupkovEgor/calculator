@@ -35,6 +35,7 @@ table {
 </style>
 </head>
 <body>
+  <p style="font-size : 15pt; color: #b3b3b3; background: #121212; text-align: right" >${fio}</p>
   <h1 style="font-size : 30pt; color: #b3b3b3; text-align:center; valign: top;">Калькулятор расчета строительства частного дома<h1>
 <table width=auto height=auto cellspacing="0" cellpadding="8" cols = "2">
 <tr><td colspan="2" align="center" class="cent" id="fio">Ваши данные:</td></tr>
