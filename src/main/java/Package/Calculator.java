@@ -51,7 +51,7 @@ public class Calculator extends  HttpServlet   {
 		private  String otd;
 		private final String ord;
 		private final String clear;
-		private final String pr;
+		private  String pr;
 		private  String pres;
 		private  String shirina;
 		private String fio;
@@ -125,6 +125,20 @@ public class Calculator extends  HttpServlet   {
             else{
                 request.setAttribute("result_clearing", "Нет");
                 clearing = false;
+            }
+            switch (pr) {
+			case "PROMO5": 
+				pr = "PROMO5";
+				break;
+			case "PROMO10": 
+				pr = "PROMO10";
+				break;
+			case "PROMO15": 
+				pr = "PROMO15";
+				break;
+			default:
+				pr = "Не применен";
+				break;
             }
 			request.setAttribute("result_promo", pr);
 			request.setAttribute("result_preset", pres);
@@ -254,6 +268,7 @@ public static String sobitie (String fields[], boolean express_order, boolean cl
 	case "PROMO15": 
 		promo = 0.85;
 		break;
+	
 	}
 	
 	if (express_order ) {
@@ -373,5 +388,5 @@ public static String sobitie (String fields[], boolean express_order, boolean cl
 	}
 	catch (IOException e){System.out.print(e);}
 }*/
-
+	
 }
