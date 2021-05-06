@@ -23,7 +23,7 @@ public class Admin extends  HttpServlet {
 		RequestCalc Calc = RequestCalc.fromRequestParameters(request);
 		Calc.setAsRequestAttributesAndCalculate(request);
 		 
-		request.getRequestDispatcher("/Form.jsp").forward(request, response);
+		request.getRequestDispatcher("/FormAdm.jsp").forward(request, response);
 		
 	}
 	
@@ -114,7 +114,9 @@ public class Admin extends  HttpServlet {
             	stmt.executeUpdate(query);
             	query = "UPDATE settings SET otdelka = (SELECT otdelka FROM default_settings WHERE type = 'summer')WHERE type = 'uptSummer'";   
             	stmt.executeUpdate(query);
-            	
+            	break;
+            }
+            case "4":{
             	query = "UPDATE settings SET length = (SELECT length FROM default_settings WHERE type = 'winter') WHERE type = 'uptWinter'"; 
             	stmt.executeUpdate(query);
             	query = "UPDATE settings SET width = (SELECT width FROM default_settings WHERE type = 'winter') WHERE type = 'uptWinter'"; 
@@ -125,7 +127,7 @@ public class Admin extends  HttpServlet {
             	stmt.executeUpdate(query);
             	query = "UPDATE settings SET otdelka = (SELECT otdelka FROM default_settings WHERE type = 'winter')WHERE type = 'uptWinter'";   
             	stmt.executeUpdate(query);
-            	break;
+            	break; 
             }
             }
             
