@@ -4,7 +4,7 @@ pageEncoding="UTF-8"%>
 <html>
 <head>
 <meta charset="utf-8">
-<title>Пример веб-страницы</title>
+<title>Результат</title>
 <style>
 body{
   background: #121212;
@@ -38,7 +38,7 @@ table {
   <p style="font-size : 15pt; color: #b3b3b3; background: #121212; text-align: right" >${fio}</p>
   <h1 style="font-size : 30pt; color: #b3b3b3; text-align:center; valign: top;">Калькулятор расчета строительства частного дома<h1>
 <table width=auto height=auto cellspacing="0" cellpadding="8" cols = "2">
-<tr><td colspan="2" align="center" class="cent" id="fio">Ваши данные:</td></tr>
+<tr><td colspan="2" align="center" class="cent" id="fio">Ваши данные: ${fio}</td></tr>
 <tr><td><p align="left"  class="text"id="length">Длина: ${result_length} м.</p></td>
   <td><p align="left" class="text" id="width">Ширина: ${result_width} м.</p></td></tr>
 <tr><td><p align="left" class="text" id="height">Высота: ${result_height} м.</p></td>
