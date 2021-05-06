@@ -4,7 +4,7 @@ pageEncoding="UTF-8"%>
 <html>
 <head>
 <meta charset="utf-8">
-<title>Калькулятор расчета площади прямоугольника.</title>
+<title>Регистрация</title>
 <style>
 body{
 	background: #121212;
