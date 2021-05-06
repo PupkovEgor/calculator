@@ -36,6 +36,7 @@ public class LogInReg extends HttpServlet {
             case 0: request.getRequestDispatcher("/LogIn.jsp").forward(request, response); break;
             case 1: request.getRequestDispatcher("/Form.jsp").forward(request, response); break;
             case 2: request.getRequestDispatcher("/Reg.jsp").forward(request, response); break;
+            case 3: request.getRequestDispatcher("/FormAdm.jsp").forward(request, response); break;
         }
     }
 
@@ -87,6 +88,10 @@ public class LogInReg extends HttpServlet {
                         go=1;
                         String query1;
 
+                        if (log.equals("admin")) {
+                            go = 3;
+                        }
+
                         for(int i =0;i<5;i++){
                             query1 = "SELECT "+arr[i]+" FROM settings WHERE type='uptWinter';";
                             rs1 = stmt.executeQuery(query1);
@@ -98,6 +103,11 @@ public class LogInReg extends HttpServlet {
                             if (rs1.next()){
                                 request.setAttribute("summer"+i,rs1.getString(arr[i]));
                             }
+                        }
+                        query1 = "SELECT fio FROM accounts WHERE login='"+log+"';";
+                        rs1 = stmt.executeQuery(query1);
+                        if (rs1.next()){
+                            request.setAttribute("FIO",rs1.getString("fio"));
                         }
                     }
                     else{
