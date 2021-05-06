@@ -34,6 +34,8 @@ public class Calculator extends  HttpServlet   {
 	public static String preset;
 	static String[] fields;
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
 		RequestCalc Calc = RequestCalc.fromRequestParameters(request);
 		Calc.setAsRequestAttributesAndCalculate(request);
 		 
@@ -52,10 +54,11 @@ public class Calculator extends  HttpServlet   {
 		private final String pr;
 		private  String pres;
 		private  String shirina;
+		private String fio;
 		
 		private String result;
 						
-		private RequestCalc (String dlina, String shirina, String visota, String floor_count, String worker_count, String otdelka, String order, String clearing, String promo, String preset) {
+		private RequestCalc (String dlina, String shirina, String visota, String floor_count, String worker_count, String otdelka, String order, String clearing, String promo, String preset, String fio) {
 			this.dl = dlina;
 			this.sh = shirina;
 			this.vis = visota;
@@ -66,6 +69,7 @@ public class Calculator extends  HttpServlet   {
 			this.clear = clearing;			
 			this.pr = promo;
 			this.pres = preset;
+			this.fio = fio;
 			
 		}
 		public static RequestCalc fromRequestParameters (HttpServletRequest request) {
@@ -79,7 +83,8 @@ public class Calculator extends  HttpServlet   {
 				request.getParameter("order"),
 				request.getParameter("clearing"),
 				request.getParameter("promo"),
-				request.getParameter("preset")
+				request.getParameter("preset"),
+				request.getParameter("fio")
 				);
 			}
 				
@@ -104,6 +109,7 @@ public class Calculator extends  HttpServlet   {
 			request.setAttribute("result_floor", fl_count);
 			request.setAttribute("result_worker", rab_count);
 			request.setAttribute("result_otdelka", otd);
+			request.setAttribute("fio", fio);
 			if (ord != null){
                 request.setAttribute("result_order", "Да");
                 express_order = true;
