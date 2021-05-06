@@ -14,6 +14,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
@@ -76,6 +77,10 @@ public class Admin extends  HttpServlet {
     			catch (NumberFormatException e) {
     					
     			}
+            ResultSet rs1=null;
+            String arr[] ={"length","width","height","floor","otdelka"};
+            String query1;
+            
             switch (type) {
             case "1": {
             	query = "UPDATE settings SET length ='"+try_length+"' WHERE type = 'uptSummer'";
@@ -130,7 +135,18 @@ public class Admin extends  HttpServlet {
             	break; 
             }
             }
-            
+            for(int i =0;i<5;i++){
+                query1 = "SELECT "+arr[i]+" FROM settings WHERE type='uptWinter';";
+                rs1 = stmt.executeQuery(query1);
+                if (rs1.next()){
+                request.setAttribute("winter"+i,rs1.getString(arr[i]));
+                }
+                query1 = "SELECT "+arr[i]+" FROM settings WHERE type='uptSummer';";
+                rs1 = stmt.executeQuery(query1);
+                if (rs1.next()){
+                    request.setAttribute("summer"+i,rs1.getString(arr[i]));
+                }
+            }
 		}catch (SQLException sqlEx ){
 			}
 		}
