@@ -107,7 +107,7 @@ public class LogInReg extends HttpServlet {
                         query1 = "SELECT fio FROM accounts WHERE login='"+log+"';";
                         rs1 = stmt.executeQuery(query1);
                         if (rs1.next()){
-                            request.setAttribute("FIO",rs1.getString("fio"));
+                            request.setAttribute("fio",rs1.getString("fio"));
                         }
                     }
                     else{
