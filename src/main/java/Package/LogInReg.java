@@ -1,11 +1,6 @@
 package Package;
 
-import javax.swing.*;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.io.*;
-import java.util.Arrays;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,10 +14,7 @@ import java.sql.Statement;
 
 @WebServlet(name="Log", urlPatterns="/LogCalc")
 
-
 public class LogInReg extends HttpServlet {
-
-
 
     static byte go = 1;
 
@@ -32,7 +24,7 @@ public class LogInReg extends HttpServlet {
         RequestCalc Calc = RequestCalc.fromRequestParameters(request);
         Calc.setAsRequestAttributesAndCalculate(request);
 
-        switch (go){
+        switch (go){ //На какую страницу будет переход при нажатии на кнопку типа submit
             case 0: request.getRequestDispatcher("/LogIn.jsp").forward(request, response); break;
             case 1: request.getRequestDispatcher("/Form.jsp").forward(request, response); break;
             case 2: request.getRequestDispatcher("/Reg.jsp").forward(request, response); break;
@@ -63,9 +55,6 @@ public class LogInReg extends HttpServlet {
         }
 
         public void setAsRequestAttributesAndCalculate(HttpServletRequest request) {
-            //boolean lo = false;
-            //boolean swi = true;
-            //boolean ch = false;
             Connection con =null;
             Statement stmt=null;
             ResultSet rs=null;
@@ -73,18 +62,16 @@ public class LogInReg extends HttpServlet {
             String arr[] ={"length","width","height","floor","otdelka"};
             if (page.equals("LogIn")) {
                 try {
-                    con = getConnection();
                     // opening database connection to MySQL server
-
-                    //con = DriverManager.getConnection(url, user, password);
-
+                    con = getConnection();
                     // getting Statement object to execute query
                     stmt = con.createStatement();
-
+                    //Проверка соответствия логина и пароля
                     String query = "SELECT id from accounts where login like '"+log+"' and pass like '"+pas+"'";
+
                     rs = stmt.executeQuery(query);
 
-                    if (rs.next()){
+                    if (rs.next()){ //Если такой элемент существует
                         go=1;
                         String query1;
 
@@ -124,10 +111,11 @@ public class LogInReg extends HttpServlet {
                     go = 0;
                 }
                 finally {
-                    //close connection ,stmt and resultset here
+                    //close connection ,stmt and resultset
                     try {con.close(); } catch (NullPointerException sqn){ /**/} catch(SQLException se) { /* .*/ }
                     try {stmt.close(); } catch (NullPointerException sqn){ /**/} catch(SQLException se) { /* .*/ }
                     try {rs.close();  } catch (NullPointerException sqn){ /**/} catch(SQLException se) { /* .*/ }
+                    try {rs1.close();  } catch (NullPointerException sqn){ /**/} catch(SQLException se) { /* .*/ }
                 }
 
             }
@@ -135,19 +123,15 @@ public class LogInReg extends HttpServlet {
             else{
                 go = 0;
                 try {
-                    // JDBC variables for opening and managing connection
-
-                     con = getConnection();
                     // opening database connection to MySQL server
-
-                    //con = DriverManager.getConnection(url, user, password);
-
+                     con = getConnection();
                     // getting Statement object to execute query
                     stmt = con.createStatement();
-
+                    //Проверка на существование логина
                     String query = "SELECT id from accounts where login like '"+log+"'";
                     rs = stmt.executeQuery(query);
                     if (!rs.next()){
+                        //Создание нового пользователя
                         query = "INSERT INTO accounts (login, pass, fio) VALUES ('"+log+"', '"+pas+"', '"+fio+"');";
                         stmt = con.createStatement();
                         stmt.executeUpdate(query);
@@ -156,9 +140,7 @@ public class LogInReg extends HttpServlet {
                         request.setAttribute("result", "Такой логин уже существует");
                         go = 2;
                     }
-                    //con.close();
-                    //stmt.close();
-                    //rs.close();
+
                 }catch (NullPointerException sqlNPE){
                     request.setAttribute("result","1Error: "+sqlNPE.getMessage());
                     go = 2;
@@ -167,7 +149,7 @@ public class LogInReg extends HttpServlet {
                     request.setAttribute("result","2Error: "+sqlEx.getSQLState());
                     go = 2;
                 } finally {
-                    //close connection ,stmt and resultset here
+                    //close connection ,stmt and resultset
                     try {con.close(); } catch (NullPointerException sqn){ /**/} catch(SQLException se) { /* .*/ }
                     try {stmt.close(); } catch (NullPointerException sqn){ /**/} catch(SQLException se) { /* .*/ }
                     try {rs.close();  } catch (NullPointerException sqn){ /**/} catch(SQLException se) { /* .*/ }
@@ -176,7 +158,8 @@ public class LogInReg extends HttpServlet {
             }
         }
     }
-    public static Connection getConnection() {
+
+    public static Connection getConnection() { //Connection to DataBase
         String driver = "com.mysql.jdbc.Driver";
         final String url = "jdbc:mysql://remotemysql.com:3306/smszCuaCce";
         final String user = "smszCuaCce";
@@ -191,6 +174,5 @@ public class LogInReg extends HttpServlet {
             return null;
         }
     }
-
 
 }
