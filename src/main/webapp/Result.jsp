@@ -38,31 +38,70 @@ table {
   <p style="font-size : 15pt; color: #b3b3b3; background: #121212; text-align: right" >${fio}</p>
   <h1 style="font-size : 30pt; color: #b3b3b3; text-align:center; valign: top;">Калькулятор расчета строительства частного дома<h1>
 <table width=auto height=auto cellspacing="0" cellpadding="8" cols = "2">
-<tr><td colspan="2" align="center" class="cent" id="fio">Ваши данные: ${fio}</td></tr>
-<tr><td><p align="left"  class="text"id="length">Длина: ${result_length} м.</p></td>
-  <td><p align="left" class="text" id="width">Ширина: ${result_width} м.</p></td></tr>
-<tr><td><p align="left" class="text" id="height">Высота: ${result_height} м.</p></td>
-  <td><p align="left" class="text" id="floor">Количество этажей: ${result_floor}</p></td></tr>
-<tr><td><p align="left" class="text" id="worker">Доп. работников: ${result_worker} чел.</p></td>
-  <td><p align="left" class="text" id="otdelka">Внутренняя отделка: ${result_otdelka} </p></td></tr>
-<tr><td><p align="left" class="text" id="order">Срочный заказ: ${result_order}</p></td>
-  <td><p align="left" class="text"id="clearing"> Очистка участка: ${result_clearing} </p></td></tr>
-<tr><td><p align="left" class="text" id="promo">Промокод: ${result_promo}</p></td>
-  <td><p align="left" class="text" id="preset" id="preset">Готовые пресеты: ${result_preset}</p></td></tr>
-  <tr><td colspan="2" align="left"><p class="text" align = "left" id="result">Результат: ${result}</p></td></tr>
-  <tr><td><p align="left"> <input type="button" name="Cancel" value=" Назад" class="combo" onclick="history.back()" style="font-size : 13pt;"></р></td>
-  <td></td></tr>
-  <td><p align="left"> <input id="button"  type="submit" name="button" onclick="asd();" value="Скачать PDF" class="combo"  style="font-size : 13pt;"/> </р></td>
-  <td><p align="left"> <input type="button" name="exit" value=" Выход из аккаунта" onclick="location.href='LogIn.jsp'" class="combo" style="font-size : 13pt;"> </р></td>
-  </table>
+    <tr>
+      <td colspan="2" style= "text-align: left;"; class="cent" id="fio">Ваши данные: ${fio}</td>
+    </tr>
+    <tr>
+      <td>
+        <p align="left"  class="text"id="length">Длина: ${result_length} м.</p>
+      </td>
+      <td>
+        <p align="left" class="text" id="width">Ширина: ${result_width} м.</p>
+     </td>
+    </tr>
+    <tr>
+      <td>
+        <p align="left" class="text" id="height">Высота: ${result_height} м.</p>
+      </td>
+      <td>
+        <p align="left" class="text" id="floor">Количество этажей: ${result_floor}</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p align="left" class="text" id="worker">Доп. работников: ${result_worker} чел.</p>
+      </td>
+      <td>
+        <p align="left" class="text" id="otdelka">Внутренняя отделка: ${result_otdelka} </p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p align="left" class="text" id="order">Срочный заказ: ${result_order}</p>
+      </td>
+      <td>
+        <p align="left" class="text"id="clearing"> Очистка участка: ${result_clearing} </p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p align="left" class="text" id="promo">Промокод: ${result_promo}</p>
+      </td>
+      <td>
+        <p align="left" class="text" id="preset" id="preset">Готовый пресет: ${result_preset}</p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="left"><p class="text" align = "left" id="result">Результат: ${result}</p></td>
+    </tr>
+      <tr>
+        <td>
+          <p align="left"> <input type="button" name="Cancel" value="Назад" class="combo" onclick="history.back()" style="font-size : 13pt;"></р>
+        </td>
+        <td></td>
+      </tr>
+        <td>
+          <p align="left"> <input id="button"  type="submit" name="button" onclick="asd();" value="Скачать PDF" class="combo"  style="font-size : 13pt;"/> </р>
+        </td>
+        <td>
+          <p align="left"> <input type="button" name="exit" value="Выход из аккаунта" onclick="location.href='LogIn.jsp'" class="combo" style="font-size : 13pt;"> </р>
+        </td>
+</table>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.71/pdfmake.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.71/vfs_fonts.js"></script>
 <script>
-  
-
 function asd(){
-
 var docDefinition = {
     info: {
         title: "Результат",
@@ -85,8 +124,7 @@ header:{
 
 content: [
 
-  {
-   
+  {  
   text:[
   '\n',
   document.getElementById('fio').textContent, '\n',
