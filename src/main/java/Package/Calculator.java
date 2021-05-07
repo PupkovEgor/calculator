@@ -227,6 +227,7 @@ public static void preset(String jcomboBox1){
 			dom.setWeight(Double.parseDouble(fields[1]));
 			dom.setKolE(Integer.parseInt(fields[3]));
 			dom.setVisota(Double.parseDouble(fields[2]));
+			dom.setVnOt();
 			//close();
 			break;
 		}
