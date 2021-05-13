@@ -57,7 +57,7 @@ table {
           
 </style>
 </head>
-<body>
+<body onload="onload();">
   <form action="${pageContext.request.contextPath}/Calculator" method="post">
     <input type="hidden" name="lenghtwin" id="winter0" value="${winter0}"/>
     <input type="hidden" name="widthwin" id="winter1" value="${winter1}"/>
@@ -256,6 +256,13 @@ table {
      document.getElementById('otdelka').readOnly = true;
      }
      }
+   
+   function onload() {
+    if (document.getElementById('fio').value.length<4){
+        location.href='LogIn.jsp';
+    }
+    }
+   
      </script>
 </html> 
 </body>
