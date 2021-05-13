@@ -8,7 +8,7 @@
   <description>Calculator RGR 12</description>
   
     <build>
-	  <finalName>CalculatorTest</finalName>
+	  <finalName>Calculator</finalName>
   <defaultGoal>package</defaultGoal>
 <pluginManagement>
             <plugins>
