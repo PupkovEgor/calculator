@@ -35,6 +35,7 @@ public class Admin extends  HttpServlet {
 		private final String fl_count;
 		private final String otdelka;
 		private final String type;
+		private String fio;
 						
 		private RequestCalc (String dlina, String shirina, String visota, String floor_count, String otdelka, String type) {
 			this.length = dlina;
@@ -80,7 +81,7 @@ public class Admin extends  HttpServlet {
             ResultSet rs1=null;
             String arr[] ={"length","width","height","floor","otdelka"};
             String query1;
-            
+            request.setAttribute("fio", "Администратор");
             switch (type) {
             case "1": {
             	query = "UPDATE settings SET length ='"+try_length+"' WHERE type = 'uptSummer'";
