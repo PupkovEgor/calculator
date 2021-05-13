@@ -74,7 +74,7 @@ table {
 }
 </style>
 </head>
-<body>
+  <body onload="onload();">
   <form action="${pageContext.request.contextPath}/Calculator" method="post">
     <input type="hidden" name="lenghtwin" id="winter0" value="${winter0}"/>
     <input type="hidden" name="widthwin" id="winter1" value="${winter1}"/>
@@ -87,7 +87,8 @@ table {
     <input type="hidden" name="floorsum" id="summer3" value="${summer3}"/>
     <input type="hidden" name="otdelkasum" id="summer4" value="${summer4}"/>
     <input type="hidden" name="fio" id="fio" value="${fio}"/>
-        
+    <p style="font-size : 15pt; color: #b3b3b3; background: #121212; text-align: right" >${fio}</p>
+  
   <div style="position: relative; text-align:center;">
     <h1 style="font-size : 30pt; color: #b3b3b3; " >Калькулятор расчета строительства частного дома<h1>
   
@@ -105,13 +106,13 @@ table {
       </tr>
       <tr>
         <td>
-          <input type="number" autocomplete="off" required min="1" step="0.1" id = "length" name="length" value= "${length}" size="20" class="combo">
+          <input type="number" autocomplete="off" required min="1" step="0.1" max="1000" id = "length" name="length" value= "${length}" size="20" class="combo"style="width: 203px">
         </td>
         <td>
         <p align="left"  class="text" style="font-size: 16pt;">м.</p>
         </td>
         <td>
-          <input type="number" autocomplete="off" required min="1" step="0.1" id = "width" name="width"  value= "${width}" size="20"class="combo">
+          <input type="number" autocomplete="off" required min="1" step="0.1" max="1000" id = "width" name="width"  value= "${width}" size="20"class="combo" style="width: 203px">
         </td>
         <td>
           <p align="left"  class="text" style="font-size: 16pt;">м.</p>
@@ -125,7 +126,7 @@ table {
       </tr>
       <tr>
         <td>
-        <input type="number" autocomplete="off" required min="2" step="0.1" id = "height" name="height" value= "${height}" size="20"class="combo">
+        <input type="number" autocomplete="off" required min="2" step="0.1" max="30" id = "height" name="height" value= "${height}" size="20"class="combo" style="width: 203px">
         </td>
         <td>
           <p align="left"  class="text" style="font-size: 16pt;">м.</p>
@@ -147,7 +148,7 @@ table {
       </tr>
       <tr>
         <td>
-          <input type="number" autocomplete="off" min="0" max="5"   step="1" name="worker"  value= "${worker}" size="20"class="combo" style="width: 203px">
+          <input type="number" autocomplete="off" min="0" max="5" step="1" name="worker"  value= "${worker}" size="20"class="combo" style="width: 203px">
         </td>
         <td>
           <p align="left"  class="text" style="font-size: 16pt;">чел.</p>
@@ -240,17 +241,17 @@ table {
       </tr>   
       <tr>
         <td style="height:60px;"><p align="left"  class="text">Длина:<br>
-          <input id="length" type="number" min="1" name="length" value= "${length}" size="20" class="combo"> </p>
+          <input id="length" type="number" min="1" max="1000" name="length" value= "${length}" size="20" class="combo"style="width: 203px"> </p>
         </td>
       </tr>
       <tr>
         <td style="height:60px;"><p align="left" class="text">Ширина:<br>
-          <input type="number" min="1" name="width"  value= "${width}" size="20"class="combo"> </p>
+          <input type="number" min="1" max="1000" name="width"  value= "${width}" size="20"class="combo" style="width: 203px"> </p>
         </td>
       </tr>
       <tr>
         <td style="height:60px;"><p align="left" class="text">Высота:<br>
-          <input type="number" min="2" name="height" value= "${height}" size="20"class="combo"></p>
+          <input type="number" min="2"max="30" name="height" value= "${height}" size="20"class="combo" style="width: 203px"></p>
         </td>
       </tr>
       <tr>
@@ -350,7 +351,16 @@ table {
      document.getElementById('otdelka').readOnly = true;
      }
      }
+
+  function onload() {
+    if (document.getElementById('fio').value.length<4){
+        location.href='LogIn.jsp';
+    }
+    }
+
      </script>
+
+     
 </html> 
 </body>
 
