@@ -160,7 +160,7 @@ public class LogInReg extends HttpServlet {
     }
 
     public static Connection getConnection() { //Connection to DataBase
-        String driver = "com.mysql.jdbc.Driver";
+        String driver = "com.mysql.cj.jdbc.Driver";
         final String url = "jdbc:mysql://remotemysql.com:3306/smszCuaCce";
         final String user = "smszCuaCce";
         final String password = "fjrxusR9mP";
