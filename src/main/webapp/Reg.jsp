@@ -33,7 +33,7 @@ body{
 <form action="${pageContext.request.contextPath}/LogCalc" method="post">
 <input type="hidden" name="page" id="Reg" value="Reg"/>
 <br>
-<input class="combo" placeholder="Фамилия И.О." type="text" name="fio" id="fio" value="${fio}" required  title="Введите ваши ФИО"><nobr class="text"> Эти данные будут использованы в результате</nobr>
+<input class="combo" placeholder="Фамилия И.О." type="text" name="fio" id="fio" minlength="4" value="${fio}" required  title="Введите ваши ФИО"><nobr class="text"> Эти данные будут использованы в результате</nobr>
 </br>
 <br>
 <input class="combo" placeholder="Логин" type="text" name="login" id="login" value="${login}" required title="Введите логин">
