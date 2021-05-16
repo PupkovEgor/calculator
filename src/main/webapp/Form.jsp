@@ -73,7 +73,7 @@ table {
     <p style="font-size : 15pt; color: #b3b3b3; background: #121212; text-align: right" >${fio}</p>
 
   <div style="position: relative; text-align:center;">
-    <h1 style="font-size : 30pt; color: #b3b3b3; " >Калькулятор расчета строительства частного дома<h1>
+    <h1 style="font-size : 30pt; color: #b3b3b3; " >Калькулятор стоимости строительства частного дома<h1>
   <div style="position: relative; align:center; display:inline-table;">
 
   <table width=auto height=auto cellspacing="0" cellpadding="5" cols = "4" style="display: inline-table;">
