@@ -13,3 +13,9 @@ after_success:
   - ssh -p 49290 root@ovz1.iutin1999.pqj7n.vps.myjino.ru rm /root/tomcat/apache-tomcat-9.0.45/webapps/Calculator.war
   - ssh -p 49290 root@ovz1.iutin1999.pqj7n.vps.myjino.ru cp /root/tomcat/Calculator.war /root/tomcat/apache-tomcat-9.0.45/webapps/
   - ssh -p 49290 root@ovz1.iutin1999.pqj7n.vps.myjino.ru rm /root/tomcat/Calculator.war
+deploy:
+  provider: heroku
+  app:
+    master: calculator12pi
+  api_key:
+    secure: cH8o9wFPGorqvMJhgrcLtg8J1fYbXWCcsXQAOaB33NIpuJUohThqNmobdOs9kD5fcrUL1LouOyUb2NNhV3iMsfKv5Pgz6HuGQB7bUlOqllQsOTolcb8nmacRc0NEWZSuAppas2SVSAYuQroi14drtoe0fH0KEnrkgUF/eB9e2cS+FmdaXJAMr8Peo0QIzdhCf54NIgEuzsnIzZBHKqPGFw/GXzhESYAfnt8fZkqgTRr3KU9ZdyXg67KlTsVZHX8QexmWwLmuJYXkYOCgEG1sNFDzjEf20HcY7USnGoqaZPLuwxruGlo0InALld7YCaOcAa3Eax7bHNNi/lOCFeVBsgC37OD57x0FqH2DaNwVVCeT/e9Z11X5SpDYGLFU0lNCuHQ31DcBv69DI86bbD2Xknn2QT4df0uOezkdwTLZg6wG232/tGKc4nDLjvF6X8H7LwRkThtHUByUxcy6MyjqrKVK4AH71WfZGpsmNLjaVpJvbMrPnaIuqMWwFS1G72YINjkweA2/h+5YBKz1qE+0MbK9ch6zn/mWJvznh3PUuWlf4n6HK683/JWVgbkJh7/CKuiAsxn/1nyB5m1RVA5WNgLLW5rrHTNPxa48e7IL0W6frpQlfm6nTR9bN0zVpagQdK9LS2NHC6RWuzKoasHh/k4G+9Tdngxy2wfdXjg3YLE=
