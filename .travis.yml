@@ -6,16 +6,17 @@ before_install:
   -in .travis/id_rsa_deploy.enc -out .travis/id_rsa_deploy -d
 script: mvn clean package
 after_success:
-  - eval "$(ssh-agent -s)"
-  - chmod 600 .travis/id_rsa_deploy
-  - ssh-add .travis/id_rsa_deploy
-  - scp -P 49290 /home/travis/build/Salikhov12/calculator/artifacts/Calculator.war root@ovz1.iutin1999.pqj7n.vps.myjino.ru:/root/tomcat/
-  - ssh -p 49290 root@ovz1.iutin1999.pqj7n.vps.myjino.ru rm /root/tomcat/apache-tomcat-9.0.45/webapps/Calculator.war
-  - ssh -p 49290 root@ovz1.iutin1999.pqj7n.vps.myjino.ru cp /root/tomcat/Calculator.war /root/tomcat/apache-tomcat-9.0.45/webapps/
-  - ssh -p 49290 root@ovz1.iutin1999.pqj7n.vps.myjino.ru rm /root/tomcat/Calculator.war
+- eval "$(ssh-agent -s)"
+- chmod 600 .travis/id_rsa_deploy
+- ssh-add .travis/id_rsa_deploy
+- scp -P 49290 /home/travis/build/Salikhov12/calculator/artifacts/Calculator.war root@ovz1.iutin1999.pqj7n.vps.myjino.ru:/root/tomcat/
+- ssh -p 49290 root@ovz1.iutin1999.pqj7n.vps.myjino.ru rm /root/tomcat/apache-tomcat-9.0.45/webapps/Calculator.war
+- ssh -p 49290 root@ovz1.iutin1999.pqj7n.vps.myjino.ru cp /root/tomcat/Calculator.war
+  /root/tomcat/apache-tomcat-9.0.45/webapps/
+- ssh -p 49290 root@ovz1.iutin1999.pqj7n.vps.myjino.ru rm /root/tomcat/Calculator.war
 deploy:
   provider: heroku
   app:
     master: calculator12pi
   api_key:
-    secure: cH8o9wFPGorqvMJhgrcLtg8J1fYbXWCcsXQAOaB33NIpuJUohThqNmobdOs9kD5fcrUL1LouOyUb2NNhV3iMsfKv5Pgz6HuGQB7bUlOqllQsOTolcb8nmacRc0NEWZSuAppas2SVSAYuQroi14drtoe0fH0KEnrkgUF/eB9e2cS+FmdaXJAMr8Peo0QIzdhCf54NIgEuzsnIzZBHKqPGFw/GXzhESYAfnt8fZkqgTRr3KU9ZdyXg67KlTsVZHX8QexmWwLmuJYXkYOCgEG1sNFDzjEf20HcY7USnGoqaZPLuwxruGlo0InALld7YCaOcAa3Eax7bHNNi/lOCFeVBsgC37OD57x0FqH2DaNwVVCeT/e9Z11X5SpDYGLFU0lNCuHQ31DcBv69DI86bbD2Xknn2QT4df0uOezkdwTLZg6wG232/tGKc4nDLjvF6X8H7LwRkThtHUByUxcy6MyjqrKVK4AH71WfZGpsmNLjaVpJvbMrPnaIuqMWwFS1G72YINjkweA2/h+5YBKz1qE+0MbK9ch6zn/mWJvznh3PUuWlf4n6HK683/JWVgbkJh7/CKuiAsxn/1nyB5m1RVA5WNgLLW5rrHTNPxa48e7IL0W6frpQlfm6nTR9bN0zVpagQdK9LS2NHC6RWuzKoasHh/k4G+9Tdngxy2wfdXjg3YLE=
+    secure: k+MmJvmDB8vv7wIGt2yxcW6iq6xLUlgj8xSR55JkNU9ZBXMsoafr9JBPVt5UvW1hSoKxOJwlYAmmaUFga3rqZAEJZXORWj01t10oIWuqfOD/ny8IyubFJHbFegpIK2wl4DgOsrQKY18izZMVigozEZZsg6eUJP0x0jlBuRyNXVDSwxld4GSoNX4IhB4fsMu2JU4SEa9JUlr0/uZkjnu/d1P4wqWlP9a5+nj7IOhfBwpVlxRfS2nVhxy+KbgcsaR7xIsx+z2sqSJXLGZjw1d28x5/gJRFC3qvyWuyucCAR50s5IlaVy/kMRYjEu92KtmJvMb0iFrWuw0/jg2oVVZ+n5Qrm5tVKMb1aUOscCRBUwFQet4wXl/3QAxQJ2ScQMUPGr5kDAI0whGCAZZdGJUxYvcDxKs2DcDy+qLK7xyBNhoyw2pN1PGF0cHirsLtXlCm90mfWXePnH2ENFiiv9lMn4N/JdqUND2H/m8/9bML1mB/JX8zQYnVTGQV7lyVmmSUxgiUb+Sjd3YPRg6K3XwHwqJGSTOEq0P+mYyb+p2258ennMHAZVmmZ8tCqjKFeHC55USi10wmAauhHMhEAd24okHaz0Wlg093jjKqoZikQhicx0DbrXr9Y1EpMnVw3FxBsFlNg9eERuAUC1tYs1ZQxMns41ZlZdSByPOh1+2jWDE=
