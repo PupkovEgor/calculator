@@ -10,5 +10,5 @@ after_success:
   - eval "$(ssh-agent -s)"
   - chmod 600 .travis/id_rsa_deploy
   - ssh-add .travis/id_rsa_deploy
-  - ssh cd tomcat/test
-  - ssh git clone https://github.com/Salikhov12/calculator
+  - ssh root@ovz1.iutin1999.pqj7n.vps.myjino.ru cd tomcat/test
+  - ssh root@ovz1.iutin1999.pqj7n.vps.myjino.ru git clone https://github.com/Salikhov12/calculator
