@@ -11,4 +11,4 @@ after_success:
   - chmod 600 .travis/id_rsa_deploy
   - ssh-add .travis/id_rsa_deploy
   - git remote add deploy https://github.com/Salikhov12/calculator
-  - git push deploy HEAD:test1
+  - git push deploy HEAD: test1
