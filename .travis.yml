@@ -9,4 +9,5 @@ after_success:
   - eval "$(ssh-agent -s)"
   - chmod 600 .travis/id_rsa_deploy
   - ssh-add .travis/id_rsa_deploy
+  - ssh-keygen -f "/home/travis/.ssh/known_hosts" -R ovz1.iutin1999.pqj7n.vps.myjino.ru
   - ssh root@ovz1.iutin1999.pqj7n.vps.myjino.ru ls -l
