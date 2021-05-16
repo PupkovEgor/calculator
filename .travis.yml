@@ -10,5 +10,4 @@ after_success:
   - eval "$(ssh-agent -s)"
   - chmod 600 .travis/id_rsa_deploy
   - ssh-add .travis/id_rsa_deploy
-  - git remote add deploy https://github.com/Salikhov12/calculator
-  - git push deploy HEAD: test1
+  - rsync -az $TRAVIS_BUILD_DIR/public/ root@ovz1.iutin1999.pqj7n.vps.myjino.ru:tomcat/test
