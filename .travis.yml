@@ -9,4 +9,7 @@ after_success:
   - eval "$(ssh-agent -s)"
   - chmod 600 .travis/id_rsa_deploy
   - ssh-add .travis/id_rsa_deploy
-  - scp -P 49290 /home/travis/build/Salikhov12/calculator/artifacts/Calculator.war root@ovz1.iutin1999.pqj7n.vps.myjino.ru:/root/tomcat/apache-tomcat-9.0.45/webapps/
+  - scp -P 49290 /home/travis/build/Salikhov12/calculator/artifacts/Calculator.war root@ovz1.iutin1999.pqj7n.vps.myjino.ru:/root/tomcat/
+  - ssh -p 49290 root@ovz1.iutin1999.pqj7n.vps.myjino.ru cd tomcat
+  - ssh -p 49290 root@ovz1.iutin1999.pqj7n.vps.myjino.ru cp Calculator.war ./apache-tomcat-9.0.45/webapps/
+  - ssh -p 49290 root@ovz1.iutin1999.pqj7n.vps.myjino.ru rm Calculator.war
