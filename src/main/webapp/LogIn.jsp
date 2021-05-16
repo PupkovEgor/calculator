@@ -29,7 +29,7 @@ body{
 </head>
 <body>
 <div class="blok-center">
-<h1 class="text">Вход в калькулятор!</h1>
+<h1 class="text">Вход в калькулятор</h1>
 <form action="${pageContext.request.contextPath}/LogCalc" method="post">
 <input type="hidden" name="page" id="LogIn" value="LogIn"/>
 <input type="hidden" name="fio" id="fio" value=""/>
