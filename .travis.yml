@@ -9,5 +9,8 @@ script:
 after_success:
   - eval "$(ssh-agent -s)"
   - chmod 600 .travis/id_rsa_deploy
-  - ssh-add .travis/id_rsa_deploy
-  - ssh root@ovz1.iutin1999.pqj7n.vps.myjino.ru ls -l -a
+deploy:
+  provider: script
+  script: mvn clean package && ls -l
+  on:
+    branch: test1
