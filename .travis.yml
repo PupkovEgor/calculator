@@ -1,6 +1,6 @@
 language: java
 addons:
-  ssh_known_hosts: ovz1.iutin1999.pqj7n.vps.myjino.ru:22
+  ssh_known_hosts: ovz1.iutin1999.pqj7n.vps.myjino.ru:49290
 before_install:
 - openssl aes-256-cbc -K $encrypted_060bfcf8ce8c_key -iv $encrypted_060bfcf8ce8c_iv
   -in .travis/id_rsa_deploy.enc -out .travis/id_rsa_deploy -d
@@ -9,4 +9,4 @@ after_success:
   - eval "$(ssh-agent -s)"
   - chmod 600 .travis/id_rsa_deploy
   - ssh-add .travis/id_rsa_deploy
-  - ssh root@ovz1.iutin1999.pqj7n.vps.myjino.ru ls -l
+  - ssh -p 49290 root@ovz1.iutin1999.pqj7n.vps.myjino.ru ls -l
