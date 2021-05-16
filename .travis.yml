@@ -1,12 +1,3 @@
-language: java
-script:
-- mvn clean package
 before_install:
-- openssl aes-256-cbc -K $encrypted_e4852a5dd08a_key -iv $encrypted_e4852a5dd08a_iv
-  -in deploy_rsa.enc -out deploy_rsa -d
-after_success:
-- eval "$(ssh-agent -s)"
-- chmod 600 .travis/deploy_key.pem
-- ssh-add .travis/deploy_key.pem
-- git remote add deploy https://github.com/Salikhov12/calculator
-- git push deploy
+- openssl aes-256-cbc -K $encrypted_060bfcf8ce8c_key -iv $encrypted_060bfcf8ce8c_iv
+  -in id_rsa_deploy.enc -out .travis/id_rsa_deploy -d
