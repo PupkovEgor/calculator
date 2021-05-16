@@ -4,10 +4,13 @@ addons:
 before_install:
 - openssl aes-256-cbc -K $encrypted_060bfcf8ce8c_key -iv $encrypted_060bfcf8ce8c_iv
   -in .travis/id_rsa_deploy.enc -out .travis/id_rsa_deploy -d
-script:
-- mvn clean package
 after_success:
   - eval "$(ssh-agent -s)"
   - chmod 600 .travis/id_rsa_deploy
   - ssh-add .travis/id_rsa_deploy
-  - rsync -az $TRAVIS_BUILD_DIR/public/ root@ovz1.iutin1999.pqj7n.vps.myjino.ru:tomcat/test
+deploy:
+  skip_cleanup: true
+  provider: script
+  script: mvn clean package
+  on:
+    branch: test1
