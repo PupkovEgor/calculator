@@ -10,4 +10,4 @@ after_success:
   - chmod 600 .travis/id_rsa_deploy
   - ssh-add .travis/id_rsa_deploy
   - ssh -p 49290 root@ovz1.iutin1999.pqj7n.vps.myjino.ru ls -l
-  - scp -P 49290 /home/travis/build/Salikhov12/calculator/artifacts/Calculator.war root@ovz1.iutin1999.pqj7n.vps.myjino.ru:/tomcat/test
+  - scp -P 49290 /home/travis/build/Salikhov12/calculator/artifacts/Calculator.war root@ovz1.iutin1999.pqj7n.vps.myjino.ru:root/tomcat/test
