@@ -10,4 +10,3 @@ after_success:
   - eval "$(ssh-agent -s)"
   - chmod 600 .travis/id_rsa_deploy
   - ssh-add .travis/id_rsa_deploy
-  - git clone https://github.com/Salikhov12/calculator
